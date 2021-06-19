@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_base_theme_bg</item>
+        <item name="colorPrimaryDark">@color/color_base_theme_bg</item>
+        <item name="colorAccent">@color/color_base_theme_bg</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/color_base_theme_bg</item>
+    </style>
+
+
+    <!-- dialog默认主题 -->
+    <style name="app_base_alertdialog" parent="@android:style/Theme.Dialog">
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否悬浮于Activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--背景透明-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!-- ActionSheet进出动画 -->
+    <style name="BottomDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/app_base_from_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/app_base_from_top_out</item>
+    </style>
+
+    <style name="CommonAlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <!--    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">-->
+    <!--        <item name="windowActionBar">false</item>-->
+    <!--        <item name="windowNoTitle">true</item>-->
+    <!--        <item name="android:windowFullscreen">true</item>-->
+    <!--        &lt;!&ndash;不让windowBackground延申到navigation bar区域&ndash;&gt;-->
+    <!--        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">false</item>-->
+    <!--        <item name="android:windowBackground">@drawable/biz_layerlist_splash_page</item>-->
+    <!--        &lt;!&ndash;刘海屏兼容&ndash;&gt;-->
+    <!--        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>-->
+    <!--    </style>-->
+
+</resources>

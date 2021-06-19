@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hjq.toast.ToastUtils
+import com.wangzs.app_base.toast.BaseToast
 
 import com.wangzs.app_base.base.android.BaseFragment
 
 /**
  * Created by xiedongdong on 2020/11/28
  */
-abstract class BizFragment : BaseFragment(), IBizView {
+abstract class AppBaseFragment : BaseFragment(), IBaseView {
     //private static final String TAG = "BizFragment";
 
     protected lateinit var mContext: Context
@@ -80,7 +80,7 @@ abstract class BizFragment : BaseFragment(), IBizView {
     }
 
     fun showToast(msg: String?) {
-        ToastUtils.show(msg)
+        BaseToast.show(msg)
     }
 
     override fun onDetach() {

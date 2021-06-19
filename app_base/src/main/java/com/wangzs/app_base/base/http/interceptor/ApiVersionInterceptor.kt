@@ -1,6 +1,6 @@
 package com.wangzs.app_base.base.http.interceptor
 
-import com.wangzs.app_base.module_base.base.BizApplication
+import com.wangzs.app_base.module_base.base.AppBaseApplication
 import com.wangzs.app_base.module_base.utils.AppUtils
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -11,7 +11,7 @@ import java.io.IOException
  */
 class ApiVersionInterceptor : Interceptor {
 
-    private val versionName = AppUtils.getAppVersionName(BizApplication.context)
+    private val versionName = AppUtils.getAppVersionName(AppBaseApplication.context)
     private var token = ""
 
     @Throws(IOException::class)

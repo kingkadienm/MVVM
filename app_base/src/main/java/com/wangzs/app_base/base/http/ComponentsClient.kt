@@ -44,7 +44,6 @@ class ComponentsClient {
 
                 val clientBuilder =
                     OkHttpClient.Builder()
-                        //.cookieJar(new CookieJar(PersistentCookieStore.getInstance(context)))
                         .addInterceptor(DynamicTimeoutInterceptor())
                         .addInterceptor(ApiVersionInterceptor())
                         .addInterceptor(HttpExceptionInterceptor())

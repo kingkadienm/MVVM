@@ -135,7 +135,7 @@ class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? 
         backImageParams.addRule(CENTER_VERTICAL)
         mIbBack = ImageButton(context)
         if (backImageRes == null) {
-            backImageRes = ContextCompat.getDrawable(context, R.drawable.biz_selector_ic_title_bar_back)
+            backImageRes = ContextCompat.getDrawable(context, R.drawable.app_base_selector_ic_title_bar_back)
             mIbBack?.setImageDrawable(backImageRes)
         }
         mIbBack?.background = null

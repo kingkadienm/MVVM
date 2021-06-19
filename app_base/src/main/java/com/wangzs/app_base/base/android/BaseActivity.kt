@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
 
-open class BaseActivity : RxAppCompatActivity() {
+open class BaseActivity : PermissionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

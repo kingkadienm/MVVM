@@ -58,6 +58,7 @@ ext {
             luban                 : "top.zibin:Luban:1.1.8",
             glide                 : "com.github.bumptech.glide:glide:4.9.0",
 
+            xlog                  : 'com.tencent.mars:mars-xlog:1.2.5'
 
     ]
 

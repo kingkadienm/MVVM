@@ -6,7 +6,7 @@ import android.view.View
 /**
  * Created by xiedongdong on 2020/11/28
  */
-interface IBizView {
+interface IBaseView {
 
     val layoutId: Int
 

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">app_base</string>
+    <string name="app_tip">提示</string>
+    <string name="app_cancel">取消</string>
+    <string name="app_ok">确定</string>
+    <string name="str_setting">去设置</string>
+    <string name="str_permission_save_camera_micphone">需要访问存储设置、相机、麦克风的权限</string>
+    <string name="str_permission_contact">需要读取通讯录的权限</string>
+    <string name="str_permission_local">需要访问定位的权限</string>
+    <string name="str_permission_save">需要访问存储的权限</string>
+    <string name="str_permission_mobile">需要访问电话权限</string>
+    <string name="str_permission_sound_save">需要访问录音和存储的权限</string>
+    <string name="str_permission_micphone">需要访问麦克风的权限</string>
+    <string name="str_permission_camera">需要访问摄像头权限</string>
+    <string name="str_permission_sms">需要发送短信的权限</string>
+    <string name="str_permission_setting_save">需要访问存储设备的权限，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_camera">需要访问存摄像头权限，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_sms">需要访问发送短信，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_sound">需要访问麦克风录音，但此权限或被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_save_camera_micphone">需要访问存储设备、相机、麦克风的权限，但此权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_save_sound">需要访问录音和存储的权限，但两者权限或被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_certain_save_camera_micphone">需要访问存储设备、相机、麦克风的权限，但某项权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_local">需要定位的权限,但此权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_contact">需要读取通讯录的权限,但此权限已被禁止，你可以到设置中更改</string>
+    <string name="str_permission_setting_save_mobile">为保证app正常使用,需要访问存储设备和电话的权限,但此权限已被禁止，你可以到设置中更改</string>
+
+</resources>

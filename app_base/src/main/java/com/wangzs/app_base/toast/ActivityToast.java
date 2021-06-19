@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.hjq.toast.config.IToast;
+import com.wangzs.app_base.toast.config.IToast;
 
 /**
  *    author : Android 轮子哥

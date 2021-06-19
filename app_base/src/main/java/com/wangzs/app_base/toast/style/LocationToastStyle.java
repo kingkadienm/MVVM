@@ -3,7 +3,7 @@ package com.wangzs.app_base.toast.style;
 import android.content.Context;
 import android.view.View;
 
-import com.hjq.toast.config.IToastStyle;
+import com.wangzs.app_base.toast.config.IToastStyle;
 
 /**
  *    author : Android 轮子哥

@@ -1,8 +1,8 @@
-if (isModule.toBoolean()) {
-    apply plugin: 'com.android.application'
-} else {
-    apply plugin: 'com.android.library'
-}
+//if (isModule.toBoolean()) {
+//    apply plugin: 'com.android.application'
+//} else {
+apply plugin: 'com.android.library'
+//}
 apply plugin: 'kotlin-android'
 
 android {
@@ -20,6 +20,16 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        multiDexEnabled true
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+                java.srcDirs = ['src/main/java']
+            }
+        }
     }
 
 
@@ -32,6 +42,7 @@ android {
         }
         debug {
             buildConfigField "boolean", "IS_MODULE", String.valueOf(rootProject.ext.isModule)
+            multiDexEnabled true
         }
     }
     compileOptions {
@@ -41,6 +52,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
@@ -48,6 +64,7 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
 
     deps.each { k, v -> implementation v }
+
 
 
 }

@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    implementation project(path: ':app_base')
     deps.each { k, v -> implementation v }
+
+
 
 }

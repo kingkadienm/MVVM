@@ -9,7 +9,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.hjq.toast.config.IToastStyle;
+import com.wangzs.app_base.toast.config.IToastStyle;
 
 /**
  *    author : Android 轮子哥

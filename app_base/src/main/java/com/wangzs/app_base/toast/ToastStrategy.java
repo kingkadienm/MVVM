@@ -8,9 +8,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
 
-import com.hjq.toast.config.IToast;
-import com.hjq.toast.config.IToastStrategy;
-import com.hjq.toast.config.IToastStyle;
+import com.wangzs.app_base.toast.config.IToast;
+import com.wangzs.app_base.toast.config.IToastStrategy;
+import com.wangzs.app_base.toast.config.IToastStyle;
 
 import java.lang.ref.WeakReference;
 

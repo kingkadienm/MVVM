@@ -1,183 +1,310 @@
 package com.wangzs.app_base.toast;
 
-import android.app.Application;
-import android.content.res.Resources;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.NinePatchDrawable;
+import android.os.Build;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.hjq.toast.config.IToastInterceptor;
-import com.hjq.toast.config.IToastStrategy;
-import com.hjq.toast.config.IToastStyle;
-import com.hjq.toast.style.BlackToastStyle;
-import com.hjq.toast.style.LocationToastStyle;
-import com.hjq.toast.style.ViewToastStyle;
-import com.hjq.toast.style.WhiteToastStyle;
+import androidx.annotation.CheckResult;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
-/**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/ToastUtils
- *    time   : 2018/09/01
- *    desc   : Toast 框架（专治 Toast 疑难杂症）
- */
-public final class ToastUtils {
+import com.wangzs.app_base.AppApplicationContext;
+import com.wangzs.app_base.R;
 
-    /** Application 对象 */
-    private static Application sApplication;
 
-    /** Toast 处理策略 */
-    private static IToastStrategy sToastStrategy;
 
-    /** Toast 样式 */
-    private static IToastStyle<?> sToastStyle;
 
-    /** Toast 拦截器（可空） */
-    private static IToastInterceptor sToastInterceptor;
+@SuppressLint("InflateParams")
+public class ToastUtils {
+    @ColorInt
+    private static int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
+    @ColorInt
+    private static int ERROR_COLOR = Color.parseColor("#353A3E");
+    @ColorInt
+    private static int INFO_COLOR = Color.parseColor("#353A3E");
+    @ColorInt
+    private static int SUCCESS_COLOR = Color.parseColor("#353A3E");
+    @ColorInt
+    private static int WARNING_COLOR = Color.parseColor("#353A3E");
+    @ColorInt
+    private static int NORMAL_COLOR = Color.parseColor("#353A3E");
 
-    /**
-     * 不允许被外部实例化
-     */
-    private ToastUtils() {}
+    private static final Typeface LOADED_TOAST_TYPEFACE = Typeface.create("sans-serif-condensed", Typeface.NORMAL);
+    private static Typeface currentTypeface = LOADED_TOAST_TYPEFACE;
+    private static int textSize = 16; // in SP
 
-    /**
-     * 初始化 Toast，需要在 Application.create 中初始化
-     *
-     * @param application       应用的上下文
-     */
-    public static void init(Application application) {
-        init(application, sToastStyle);
+    private static boolean tintIcon = false;
+    private static Toast currentToast;
+
+    private ToastUtils() {
+        // avoiding instantiation
     }
 
-    /**
-     * 初始化 Toast 及样式
-     */
-    public static void init(Application application, IToastStyle<?> style) {
-        sApplication = application;
-
-        // 初始化 Toast 显示处理器
-        if (sToastStrategy == null) {
-            setStrategy(new ToastStrategy());
-        }
-
-        if (style == null) {
-            style = new BlackToastStyle();
-        }
-
-        // 设置 Toast 样式
-        setStyle(style);
+    public static void normal(@NonNull CharSequence message) {
+        normal(message, Toast.LENGTH_SHORT, null, false);
     }
 
-    /**
-     * 显示一个对象的吐司
-     *
-     * @param object      对象
-     */
-    public static void show(Object object) {
-        show(object != null ? object.toString() : "null");
+    public static void normal(@NonNull CharSequence message, Drawable icon) {
+        normal(message, Toast.LENGTH_SHORT, icon, false);
     }
 
-    /**
-     * 显示一个吐司
-     *
-     * @param id      如果传入的是正确的 string id 就显示对应字符串
-     *                如果不是则显示一个整数的string
-     */
-    public static void show(int id) {
-        try {
-            // 如果这是一个资源 id
-            show(sApplication.getResources().getText(id));
-        } catch (Resources.NotFoundException ignored) {
-            // 如果这是一个 int 整数
-            show(String.valueOf(id));
-        }
+    public static void normal(@NonNull CharSequence message, int duration) {
+        normal(message, duration, null, false);
     }
 
-    /**
-     * 显示一个吐司
-     *
-     * @param text      需要显示的文本
-     */
-    public static void show(final CharSequence text) {
-        // 如果是空对象或者空文本就不显示
-        if (text == null || text.length() == 0) {
+    public static void normal(@NonNull CharSequence message, int duration,
+                              Drawable icon) {
+        normal(message, duration, icon, false);
+    }
+
+    public static void normal(@NonNull CharSequence message, int duration,
+                              Drawable icon, boolean withIcon) {
+        custom(message, icon, NORMAL_COLOR, duration, withIcon, false);
+    }
+
+    public static void warning(@NonNull CharSequence message) {
+        warning(message, Toast.LENGTH_SHORT, false);
+    }
+
+    public static void warning(@NonNull CharSequence message, int duration) {
+        warning(message, duration, false);
+    }
+
+    public static void warning(@NonNull CharSequence message, int duration, boolean withIcon) {
+        custom(message, getDrawable(R.drawable.app_base_toasy_error_outline_white),
+                WARNING_COLOR, duration, withIcon, false);
+    }
+
+    public static void info(@NonNull CharSequence message) {
+        info(message, Toast.LENGTH_SHORT, false);
+    }
+
+
+    public static void info(@StringRes int message) {
+        info(AppApplicationContext.getContext().getString(message), Toast.LENGTH_SHORT, false);
+    }
+
+    public static void info(@NonNull CharSequence message, int duration) {
+        info(message, duration, false);
+    }
+
+    public static void info(@NonNull CharSequence message, int duration, boolean withIcon) {
+        custom(message, getDrawable(R.drawable.app_base_toasy_info_outline_white),
+                INFO_COLOR, duration, withIcon, false);
+    }
+
+    public static void success(@NonNull CharSequence message) {
+        success(message, Toast.LENGTH_SHORT, false);
+    }
+
+    public static void success(@NonNull CharSequence message, int duration) {
+        success(message, duration, false);
+    }
+
+    public static void success(@NonNull CharSequence message, int duration, boolean withIcon) {
+        custom(message, getDrawable(R.drawable.app_base_toasy_check_white),
+                SUCCESS_COLOR, duration, withIcon, false);
+    }
+
+    public static void error(@NonNull CharSequence message) {
+        error(message, Toast.LENGTH_SHORT, false);
+    }
+
+    public static void error(@NonNull CharSequence message, int duration) {
+        error(message, duration, false);
+    }
+
+    public static void error(@NonNull CharSequence message, int duration, boolean withIcon) {
+        custom(message, getDrawable(R.drawable.app_base_error_emoj),
+                ERROR_COLOR, duration, withIcon, false);
+    }
+
+    public static void custom(@NonNull CharSequence message, Drawable icon,
+                              int duration, boolean withIcon) {
+        custom(message, icon, -1, duration, withIcon, false);
+    }
+
+    public static void custom(@NonNull CharSequence message, @DrawableRes int iconRes,
+                              @ColorInt int tintColor, int duration,
+                              boolean withIcon, boolean shouldTint) {
+        custom(message, getDrawable(iconRes),
+                tintColor, duration, withIcon, shouldTint);
+    }
+
+    public static void custom(@NonNull CharSequence message, Drawable icon,
+                              @ColorInt int tintColor, int duration,
+                              boolean withIcon, boolean shouldTint) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N /*&& !notificationEnabled*/) {
+            BaseToast.show(message);
             return;
         }
+        if (currentToast != null) {
+            currentToast.cancel();
+        }
+        currentToast = new Toast(AppApplicationContext.getContext());
+        currentToast.setGravity(Gravity.CENTER,0,0);
+        final View toastLayout = ((LayoutInflater) AppApplicationContext.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+                .inflate(R.layout.app_base_toast_layout, null);
+        final ImageView toastIcon = (ImageView) toastLayout.findViewById(R.id.toast_icon);
+        final TextView toastTextView = (TextView) toastLayout.findViewById(R.id.toast_text);
+        toastLayout.setBackgroundResource(R.drawable.app_base_toast_bg);
 
-        if (sToastInterceptor != null && sToastInterceptor.intercept(text)) {
-            return;
+        if (withIcon) {
+            if (icon == null) {
+                throw new IllegalArgumentException("Avoid passing 'icon' as null if 'withIcon' is set to true");
+            }
+            if (tintIcon) {
+                icon = tintIcon(icon, DEFAULT_TEXT_COLOR);
+            }
+            setBackground(toastIcon, icon);
+        } else {
+            toastIcon.setVisibility(View.GONE);
         }
 
-        sToastStrategy.showToast(text);
+        toastTextView.setTextColor(DEFAULT_TEXT_COLOR);
+        toastTextView.setText(message);
+        toastTextView.setTypeface(currentTypeface);
+        toastTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        toastLayout.setPadding(35, 35, 35, 35);
+
+        currentToast.setView(toastLayout);
+        currentToast.setDuration(duration);
+        currentToast.show();
     }
 
-    /**
-     * 取消吐司的显示
-     */
-    public static void cancel() {
-        sToastStrategy.cancelToast();
-    }
+    public static class Config {
+        @ColorInt
+        private int DEFAULT_TEXT_COLOR = ToastUtils.DEFAULT_TEXT_COLOR;
+        @ColorInt
+        private int ERROR_COLOR = ToastUtils.ERROR_COLOR;
+        @ColorInt
+        private int INFO_COLOR = ToastUtils.INFO_COLOR;
+        @ColorInt
+        private int SUCCESS_COLOR = ToastUtils.SUCCESS_COLOR;
+        @ColorInt
+        private int WARNING_COLOR = ToastUtils.WARNING_COLOR;
 
-    /**
-     * 设置吐司的位置
-     *
-     * @param gravity           重心
-     */
-    public static void setGravity(int gravity) {
-        setGravity(gravity, 0, 0);
-    }
+        private Typeface typeface = ToastUtils.currentTypeface;
+        private int textSize = ToastUtils.textSize;
 
-    public static void setGravity(int gravity, int xOffset, int yOffset) {
-        setGravity(gravity, xOffset, yOffset, 0, 0);
-    }
+        private boolean tintIcon = ToastUtils.tintIcon;
 
-    public static void setGravity(int gravity, int xOffset, int yOffset, float horizontalMargin, float verticalMargin) {
-        sToastStrategy.bindStyle(new LocationToastStyle(sToastStyle, gravity, xOffset, yOffset, horizontalMargin, verticalMargin));
-    }
-
-    /**
-     * 给当前 Toast 设置新的布局
-     */
-    public static void setView(int id) {
-        if (id <= 0) {
-            return;
+        private Config() {
+            // avoiding instantiation
         }
-        setStyle(new ViewToastStyle(id, sToastStyle));
+
+        @CheckResult
+        public static Config getInstance() {
+            return new Config();
+        }
+
+        public static void reset() {
+            ToastUtils.DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
+            ToastUtils.ERROR_COLOR = Color.parseColor("#353A3E");
+            ToastUtils.INFO_COLOR = Color.parseColor("#353A3E");
+            ToastUtils.SUCCESS_COLOR = Color.parseColor("#353A3E");
+            ToastUtils.WARNING_COLOR = Color.parseColor("#353A3E");
+            ToastUtils.currentTypeface = LOADED_TOAST_TYPEFACE;
+            ToastUtils.textSize = 16;
+            ToastUtils.tintIcon = false;
+        }
+
+        @CheckResult
+        public Config setTextColor(@ColorInt int textColor) {
+            DEFAULT_TEXT_COLOR = textColor;
+            return this;
+        }
+
+        @CheckResult
+        public Config setErrorColor(@ColorInt int errorColor) {
+            ERROR_COLOR = errorColor;
+            return this;
+        }
+
+        @CheckResult
+        public Config setInfoColor(@ColorInt int infoColor) {
+            INFO_COLOR = infoColor;
+            return this;
+        }
+
+        @CheckResult
+        public Config setSuccessColor(@ColorInt int successColor) {
+            SUCCESS_COLOR = successColor;
+            return this;
+        }
+
+        @CheckResult
+        public Config setWarningColor(@ColorInt int warningColor) {
+            WARNING_COLOR = warningColor;
+            return this;
+        }
+
+        @CheckResult
+        public Config setToastTypeface(@NonNull Typeface typeface) {
+            this.typeface = typeface;
+            return this;
+        }
+
+        @CheckResult
+        public Config setTextSize(int sizeInSp) {
+            this.textSize = sizeInSp;
+            return this;
+        }
+
+        @CheckResult
+        public Config tintIcon(boolean tintIcon) {
+            this.tintIcon = tintIcon;
+            return this;
+        }
+
+        public void apply() {
+            ToastUtils.DEFAULT_TEXT_COLOR = DEFAULT_TEXT_COLOR;
+            ToastUtils.ERROR_COLOR = ERROR_COLOR;
+            ToastUtils.INFO_COLOR = INFO_COLOR;
+            ToastUtils.SUCCESS_COLOR = SUCCESS_COLOR;
+            ToastUtils.WARNING_COLOR = WARNING_COLOR;
+            ToastUtils.currentTypeface = typeface;
+            ToastUtils.textSize = textSize;
+            ToastUtils.tintIcon = tintIcon;
+        }
+    }
+    static Drawable tintIcon(@NonNull Drawable drawable, @ColorInt int tintColor) {
+        drawable.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
+        return drawable;
     }
 
-    /**
-     * 初始化全局的 Toast 样式
-     *
-     * @param style         样式实现类，框架已经实现两种不同的样式
-     *                      黑色样式：{@link BlackToastStyle}
-     *                      白色样式：{@link WhiteToastStyle}
-     */
-    public static void setStyle(IToastStyle<?> style) {
-        sToastStyle = style;
-        sToastStrategy.bindStyle(style);
+    private static Drawable tint9PatchDrawableFrame(@ColorInt int tintColor) {
+        final NinePatchDrawable toastDrawable = (NinePatchDrawable) getDrawable(R.drawable.app_base_toast_frame);
+        return tintIcon(toastDrawable, tintColor);
     }
 
-    public static IToastStyle<?> getStyle() {
-        return sToastStyle;
+    static void setBackground(@NonNull View view, Drawable drawable) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
     }
 
-    /**
-     * 设置 Toast 显示策略
-     */
-    public static void setStrategy(IToastStrategy strategy) {
-        sToastStrategy = strategy;
-        sToastStrategy.registerStrategy(sApplication);
-    }
-
-    public static IToastStrategy getStrategy() {
-        return sToastStrategy;
-    }
-
-    /**
-     * 设置 Toast 拦截器（可以根据显示的内容决定是否拦截这个Toast）
-     * 场景：打印 Toast 内容日志、根据 Toast 内容是否包含敏感字来动态切换其他方式显示（这里可以使用我的另外一套框架 XToast）
-     */
-    public static void setInterceptor(IToastInterceptor interceptor) {
-        sToastInterceptor = interceptor;
-    }
-
-    public static IToastInterceptor getInterceptor() {
-        return sToastInterceptor;
+    public static Drawable getDrawable(@DrawableRes int id) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return AppApplicationContext.getContext().getDrawable(id);
+        } else {
+            return AppApplicationContext.getContext().getResources().getDrawable(id);
+        }
     }
 }

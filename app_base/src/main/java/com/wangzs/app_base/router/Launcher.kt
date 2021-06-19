@@ -1,7 +1,7 @@
 package com.wangzs.app_base.router
 
 import com.alibaba.android.arouter.launcher.ARouter
-import com.hjq.toast.ToastUtils
+import com.wangzs.app_base.toast.BaseToast
 import com.wangzs.app_base.BuildConfig
 
 /**
@@ -14,7 +14,7 @@ object Launcher {
         return if (!BuildConfig.IS_MODULE) {
             true
         } else {
-            ToastUtils.show("组件开发中")
+            BaseToast.show("组件开发中")
             false
         }
     }
