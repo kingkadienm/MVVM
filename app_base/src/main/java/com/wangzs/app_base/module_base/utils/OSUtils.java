@@ -9,7 +9,9 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 
 /**
- * Created by xiedongdong on 2019/3/30
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class OSUtils {
 

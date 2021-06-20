@@ -10,7 +10,9 @@ import java.lang.reflect.Type
 import java.util.ArrayList
 
 /**
- * Created by xiedongdong on 2020/11/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 open class Model {
 

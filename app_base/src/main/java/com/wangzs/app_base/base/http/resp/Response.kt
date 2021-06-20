@@ -4,7 +4,9 @@ import com.wangzs.app_base.module_base.model.Model
 
 
 /**
- * Created by xiedongdong on 2020/01/18
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class Response<T>(
     var errorCode: Int = 0,

@@ -9,7 +9,9 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 /**
- * Created by xiedongdong on 2020/01/18
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class HttpExceptionInterceptor : Interceptor {
     private val sbHttpExceptionMessage = StringBuilder()

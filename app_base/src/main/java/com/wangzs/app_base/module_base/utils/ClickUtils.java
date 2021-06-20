@@ -1,7 +1,9 @@
 package com.wangzs.app_base.module_base.utils;
 
 /**
- * Created by xiedongdong on 2018/10/11
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class ClickUtils {
 

@@ -12,7 +12,9 @@ import java.nio.charset.StandardCharsets
 import java.util.*
 
 /**
- * Created by xiedongdong on 2020/01/18
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 object HttpInterceptorUtils {
     private val UTF8 = StandardCharsets.UTF_8

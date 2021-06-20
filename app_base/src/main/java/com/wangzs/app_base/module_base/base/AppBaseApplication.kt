@@ -7,7 +7,9 @@ import com.wangzs.app_base.base.android.BaseApplication
 import com.wangzs.app_base.toast.BaseToast
 
 /**
- * Created by xiedongdong on 2020/11/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 open class AppBaseApplication : BaseApplication() {
 

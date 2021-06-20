@@ -11,7 +11,9 @@ import java.net.ConnectException
 import java.net.UnknownHostException
 
 /**
- * Created by xiedongdong on 2020/01/18
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 abstract class RespHandler<T> : DisposableObserver<T>() {
 

@@ -22,7 +22,9 @@ import com.wangzs.app_base.module_base.utils.KeyBoardUtils
 import com.wangzs.app_base.module_base.utils.UIUtils
 
 /**
- * Created by xiedongdong on 2019/3/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class TitleBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
         RelativeLayout(context, attrs, defStyleAttr) {

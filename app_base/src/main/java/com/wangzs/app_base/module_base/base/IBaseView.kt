@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 
 /**
- * Created by xiedongdong on 2020/11/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 interface IBaseView {
 

@@ -7,7 +7,9 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 
 /**
- * Created by xiedongdong on 2019/08/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class NoScrollViewPager @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null

@@ -24,10 +24,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * Created by Jaeger on 16/2/14.
- * <p>
- * Email: chjie.jaeger@gmail.com
- * GitHub: https://github.com/laobie
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class StatusBarUtil {
 

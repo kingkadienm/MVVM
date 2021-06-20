@@ -1,3 +1,4 @@
+include ':JetpackMvvm'
 include ':message'
 include ':mine'
 include ':app_base'

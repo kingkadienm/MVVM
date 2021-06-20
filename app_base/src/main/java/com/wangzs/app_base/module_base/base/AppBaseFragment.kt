@@ -10,7 +10,9 @@ import com.wangzs.app_base.toast.BaseToast
 import com.wangzs.app_base.base.android.BaseFragment
 
 /**
- * Created by xiedongdong on 2020/11/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 abstract class AppBaseFragment : BaseFragment(), IBaseView {
     //private static final String TAG = "BizFragment";

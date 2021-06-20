@@ -10,7 +10,9 @@ import java.util.concurrent.TimeUnit
 import java.util.logging.Logger
 
 /**
- * Created by xiedongdong on 2020/01/18
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class HttpLoggingInterceptor @JvmOverloads constructor(tag: String? = TAG) : Interceptor {
 

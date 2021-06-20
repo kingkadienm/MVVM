@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 /**
- * Created by xiedongdong on 2019/01/03.
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class SharedPreferencesUtils {
 

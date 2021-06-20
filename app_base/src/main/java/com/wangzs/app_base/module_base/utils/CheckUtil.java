@@ -16,8 +16,9 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * com.yuntongxun.rongxin.common.utils in ECDemo_Android Created by Jorstin on
- * 2015/3/30.
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class CheckUtil {
 

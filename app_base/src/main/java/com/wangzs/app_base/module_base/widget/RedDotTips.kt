@@ -15,7 +15,9 @@ import com.wangzs.app_base.module_base.utils.UIUtils
 import java.util.*
 
 /**
- * Created by xiedongdong on 2019/01/08.
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class RedDotTips @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
         AppCompatTextView(context, attrs, defStyleAttr) {

@@ -7,7 +7,9 @@ import okhttp3.Response
 import java.io.IOException
 
 /**
- * Created by xiedongdong on 2020/01/18
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class ApiVersionInterceptor : Interceptor {
 

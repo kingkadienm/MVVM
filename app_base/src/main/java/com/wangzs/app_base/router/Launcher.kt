@@ -5,7 +5,9 @@ import com.wangzs.app_base.toast.BaseToast
 import com.wangzs.app_base.BuildConfig
 
 /**
- * Created by xiedongdong on 2020/11/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 object Launcher {
 

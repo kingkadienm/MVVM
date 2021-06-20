@@ -4,7 +4,9 @@ import android.content.Context
 import com.alibaba.android.arouter.facade.template.IProvider
 
 /**
- * Created by xiedongdong on 2020/12/01
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 interface MainOfficeLauncher : IProvider {
 

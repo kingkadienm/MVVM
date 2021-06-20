@@ -4,7 +4,9 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 /**
- * Created by xiedongdong on 2019/01/08.
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class UIUtils {
 

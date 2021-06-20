@@ -13,7 +13,9 @@ import android.text.TextUtils;
 import java.util.List;
 
 /**
- * Created by xiedongdong on 2020/12/01
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 public class AppUtils {
 

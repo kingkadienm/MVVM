@@ -11,7 +11,9 @@ import com.wangzs.app_base.module_base.widget.TitleBar
 import com.wangzs.app_base.toast.BaseToast
 
 /**
- * Created by xiedongdong on 2020/11/28
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 abstract class AppBaseActivity : BaseActivity(), IBaseView {
     protected lateinit var mContext: Context

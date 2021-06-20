@@ -4,7 +4,9 @@ import android.os.Bundle
 import com.wangzs.app_base.base.android.BaseActivity
 
 /**
- * Created by xiedongdong on 2020/12/01
+ * @Description:
+ * @Author: wangzs
+ * @Version:
  */
 class SplashActivity : BaseActivity() {
 
