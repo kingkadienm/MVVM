@@ -5,7 +5,7 @@
     <application>
         <provider
             android:authorities="${applicationId}.KtxInstaller"
-            android:name="com.wangzs.jetpackmvvm.base.Ktx"
+            android:name="com.wangzs.mvvm.base.Ktx"
             android:exported="false"/>
     </application>
 </manifest>

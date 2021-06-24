@@ -3,50 +3,33 @@ package com.wangzs.mvvm
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import com.wangzs.app_base.module_base.base.AppBaseActivity
-import com.wangzs.app_base.module_base.utils.EasyPermissionsEx
-import com.wangzs.app_base.module_base.utils.FileAccessor
-import com.wangzs.app_base.module_base.utils.log.LogUtil
+import com.wangzs.app_base.utils.log.LogUtil
+import com.wangzs.mvvm.base.activity.BaseVmActivity
+import com.wangzs.mvvm.base.viewmodel.BaseViewModel
 
-class MainActivity : AppBaseActivity() {
-
-
-    override val layoutId: Int
-        get() = R.layout.activity_main
-
-    override fun initView(savedInstanceState: Bundle?, view: View?) {
-
-
-        if (EasyPermissionsEx.hasPermissions(this, needPermissionsReadExternalStorage)) {
-
-        } else {
-            EasyPermissionsEx.requestPermissions(
-                this,
-                getString(R.string.str_permission_save),
-                PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE,
-                needPermissionsReadExternalStorage
-            )
-        }
-
-        findViewById<Button>(R.id.testBtn).setOnClickListener {
-            LogUtil.e("daddddd")
-            FileAccessor.getCloudPathName()
-        }
+class MainActivity : BaseVmActivity<BaseViewModel>() {
+    override fun layoutId(): Int {
+        return R.layout.activity_main
     }
 
-    override fun initEvent() {
+    override fun initView(savedInstanceState: Bundle?) {
+        val findViewById = findViewById<RaiseHandsFloatWindow>(R.id.RaiseHandsFloatWindow)
+        findViewById.imageView.setImageResource(R.drawable.ic_launcher_foreground)
+        findViewById.textView.text = "adadasd"
+    }
+
+
+    override fun createObserver() {
 
     }
 
-    override fun initData() {
+    override fun dismissLoading() {
 
     }
 
-    override fun isShowTitle(): Boolean {
-        return true
+    override fun showLoading(message: String) {
+
     }
 
-    override fun getTitleStr(): String? {
-        return "title"
-    }
+
 }

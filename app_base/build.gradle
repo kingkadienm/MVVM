@@ -31,6 +31,11 @@ android {
                 java.srcDirs = ['src/main/java']
             }
         }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
 
@@ -53,6 +58,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding = true
+    }
     repositories {
         flatDir {
             dirs 'libs'
@@ -62,7 +70,8 @@ android {
 
 dependencies {
 
-    api fileTree(include: ['*.jar'], dir: 'libs')
+
+//    api fileTree(include: ['*.jar'], dir: 'libs')
 
     deps.each { k, v -> implementation v }
 

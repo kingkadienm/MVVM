@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wangzs.app_base.R;
-import com.wangzs.app_base.module_base.utils.UIUtils;
 
 
 public class CommonAlertDialog {
@@ -71,8 +70,8 @@ public class CommonAlertDialog {
         dialog.setContentView(view);
 
         // 调整dialog背景大小
-        lLayout_bg.setLayoutParams(new FrameLayout.LayoutParams(UIUtils.dp2px(context,270),
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+//        lLayout_bg.setLayoutParams(new FrameLayout.LayoutParams(UIUtils.dp2px(context,270),
+//                ViewGroup.LayoutParams.WRAP_CONTENT));
 
         return this;
     }

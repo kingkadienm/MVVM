@@ -6,11 +6,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 
-import com.wangzs.app_base.module_base.utils.log.LogUtil;
+import com.wangzs.app_base.utils.log.LogUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InvalidClassException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 

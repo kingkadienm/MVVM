@@ -3,7 +3,6 @@
     package="com.wangzs.mvvm">
 
 
-
     <application
         android:name=".App"
         android:allowBackup="true"

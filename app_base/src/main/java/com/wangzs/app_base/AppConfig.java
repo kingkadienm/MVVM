@@ -2,7 +2,7 @@ package com.wangzs.app_base;
 
 import android.content.Context;
 
-import com.wangzs.app_base.module_base.utils.FileAccessor;
+import com.wangzs.app_base.utils.FileAccessor;
 
 /**
  * @Description:
