@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.wangzs.lib.common.widget.TabBarView
+        android:id="@+id/tab_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_57" />
+</androidx.appcompat.widget.LinearLayoutCompat>

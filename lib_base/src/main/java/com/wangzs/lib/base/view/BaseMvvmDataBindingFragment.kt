@@ -1,0 +1,41 @@
+package com.wangzs.lib.base.view
+
+import android.view.ViewStub
+import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.ViewModel
+import com.wangzs.lib.base.mvvm.viewmodel.BaseViewModel
+import com.wangzs.lib.base.utils.ReflectUtils
+import com.wangzs.lib.base.view.databinding.FragmentBindingHolder
+import com.wangzs.lib.base.view.databinding.FragmentViewDataBindingHolder
+
+/**
+ * Describe:
+ * 基础 DataBinding 页面
+ *
+ * @author wangzs
+ * @Date 2020/12/17
+ */
+abstract class BaseMvvmDataBindingFragment<V : ViewDataBinding, VM : BaseViewModel> :
+    BaseMvvmFragment<VM>(), FragmentBindingHolder<V> by FragmentViewDataBindingHolder() {
+
+    override fun initContentView(mViewStubContent: ViewStub) {
+        with(mViewStubContent) {
+            layoutResource = onBindLayout()
+            inflateBinding(viewStub = this, onClear = { binding -> binding.onClear() }) { binding ->
+                binding.lifecycleOwner = this@BaseMvvmDataBindingFragment
+                onBindVariableId().forEach { pair ->
+                    binding.setVariable(pair.first, pair.second)
+                }
+            }
+        }
+    }
+
+    override fun onBindViewModel(): Class<VM> {
+        return ReflectUtils.getActualTypeArgument(ViewModel::class.java, this.javaClass) as? Class<VM>
+            ?: throw IllegalArgumentException("找不到 ViewModelClass 实例，建议重写该方法")
+    }
+
+    abstract fun onBindVariableId(): MutableList<Pair<Int, Any>>
+
+    abstract fun V.onClear()
+}

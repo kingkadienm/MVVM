@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wangzs.module.me">
+
+    <application>
+        <activity
+            android:name="com.wangzs.module.me.activity.SaveStateTestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.wangzs.module.me.activity.RoomTestActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.wangzs.module.me.activity.MoreRequestServerActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

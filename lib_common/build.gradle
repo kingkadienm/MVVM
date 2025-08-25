@@ -1,0 +1,28 @@
+apply from: "../lib.build.gradle"
+
+android {
+
+}
+
+dependencies {
+
+    api project(":lib_base")
+    api project(":lib_log")
+    api project(":lib_net")
+    api project(":lib_image_picker")
+
+    def Depends = [
+            apis               : rootProject.ext.commonDepends.api,
+            implementations    : rootProject.ext.commonDepends.implementations,
+            kapt               : rootProject.ext.commonDepends.kapt,
+            compileOnly        : rootProject.ext.commonDepends.compile,
+            testImplementations: rootProject.ext.commonDepends.testImpl,
+            debugApi           : rootProject.ext.commonDepends.debugApi,
+    ]
+    Depends.apis.each { api it }
+    Depends.implementations.each { implementation it }
+    Depends.kapt.each { kapt it }
+    Depends.compileOnly.each { compileOnly it }
+    Depends.testImplementations.each { testImplementation it }
+    Depends.debugApi.each { debugApi it }
+}

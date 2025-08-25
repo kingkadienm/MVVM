@@ -1,0 +1,134 @@
+ext {
+    // 构建版本
+    kotlinVersion = getProperty('kotlin.version')
+    compileVersion = 33
+    buildToolsVersion = "30.0.3"
+    minSdkVersion = 26
+    targetVersion = 33
+    // 生成APK版本
+    versionCode = 3
+    versionName = "1.0.3"
+
+    apply from: 'lib_depends.gradle'
+
+    baseDepends = [
+            api            : [
+                    libs.google.material,
+                    libs.google.gson,
+                    libs.androidx.core,
+                    libs.androidx.appcompat,
+                    libs.androidx.multidex,
+                    libs.androidx.activity.ktx,
+                    libs.androidx.fragment.ktx,
+                    libs.smart.layout_kernel,
+                    libs.smart.header_classics,
+                    libs.smart.footer_classics,
+                    libs.BaseAdapterHelper,
+                    libs.skeleton,
+                    libs.shimmerlayout,
+                    libs.eventbus,
+            ],
+            implementations: [],
+            kapt           : [],
+            compile        : [],
+            testImpl       : [
+                    libs.junit,
+            ],
+    ]
+
+    baseModuleDepends = [
+            api            : [],
+            implementations: [],
+            kapt           : [],
+            compile        : [],
+            testImpl       : [],
+    ]
+
+    commonDepends = [
+            api            : [
+                    libs.glide.core,
+                    libs.glide.transformations,
+            ],
+            implementations: [],
+            kapt           : [
+                    libs.glide.compiler,
+            ],
+            compile        : [],
+            testImpl       : [],
+            debugApi       : [
+                    libs.leakcanary,
+            ],
+    ]
+
+    domainDepends = [
+            api            : [],
+            implementations: [],
+            kapt           : [],
+            compile        : [],
+            testImpl       : [],
+    ]
+
+    imagePickerDepends = [
+            api            : [
+                    libs.androidx.appcompat,
+                    libs.google.material,
+                    libs.glide.core,
+            ],
+            implementations: [],
+            kapt           : [
+                    libs.glide.compiler,
+            ],
+            compile        : [],
+            testImpl       : [],
+    ]
+
+    netDepends = [
+            api            : [
+                    libs.kotlin.coroutines,
+                    libs.retrofit2.retrofit2,
+                    libs.retrofit2.converter_gson,
+                    libs.retrofit2.logging_interceptor,
+                    libs.androidx.room.core,
+                    libs.androidx.room.room_ktx,
+            ],
+            implementations: [],
+            kapt           : [
+                    libs.androidx.room.room_compiler,
+            ],
+            compile        : [],
+            testImpl       : [
+                    libs.junit,
+            ],
+            androidTestImpl: [
+                    libs.androidJunit,
+                    libs.androidEspressoCore,
+            ],
+    ]
+
+    // module.build.gradle
+    moduleBuildDepends = [
+            api            : [],
+            implementations: [],
+            kapt           : [
+                    libs.androidx.room.room_compiler,
+            ],
+            compile        : [],
+            testImpl       : [],
+    ]
+
+    // base.build.gradle
+    baseBuildDepends = [
+            api            : [
+                    libs.arouter.core,
+            ],
+            implementations: [],
+            kapt           : [
+                    libs.arouter.compiler,
+            ],
+            compile        : [],
+            testImpl       : [
+                    libs.junit,
+            ],
+    ]
+
+}

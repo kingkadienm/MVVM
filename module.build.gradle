@@ -1,0 +1,41 @@
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply from: "../base.build.gradle"
+
+android {
+    // 每个单独的 module库build可进行单独自定义配置相关文件信息
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    exclude 'debug/**'
+                }
+            }
+        }
+    }
+
+}
+dependencies {
+    api project(":lib_base_module")
+
+    def Depends = [
+            apis               : rootProject.ext.moduleBuildDepends.api,
+            implementations    : rootProject.ext.moduleBuildDepends.implementations,
+            kapt               : rootProject.ext.moduleBuildDepends.kapt,
+            compileOnly        : rootProject.ext.moduleBuildDepends.compile,
+            testImplementations: rootProject.ext.moduleBuildDepends.testImpl,
+    ]
+    Depends.apis.each { api it }
+    Depends.implementations.each { implementation it }
+    Depends.kapt.each { kapt it }
+    Depends.compileOnly.each { compileOnly it }
+    Depends.testImplementations.each { testImplementation it }
+}
