@@ -3,14 +3,13 @@ package com.wangzs.lib.base.module.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 import java.lang.System
-import java.util.*
 import kotlin.Long
 
 /**
  * 基础实体类，所有 Room 实体都应继承此类
  */
 
-abstract class CoreEntity {
+abstract class BaseEntity {
     @PrimaryKey(autoGenerate = true)
     open var id: Long = 0
 
@@ -34,7 +33,7 @@ abstract class CoreEntity {
     open var modifiedBy: String? = null
 
     // 深度拷贝方法
-    open fun deepCopy(): CoreEntity {
+    open fun deepCopy(): BaseEntity {
         throw IllegalStateException("Subclasses must override this method")
     }
 

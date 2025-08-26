@@ -10,7 +10,7 @@ import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.wangzs.lib.base.module.database.entity.CoreEntity
+import com.wangzs.lib.base.module.database.entity.BaseEntity
 import com.wangzs.lib.base.module.database.exception.DatabaseException
 import java.lang.reflect.ParameterizedType
 
@@ -21,7 +21,7 @@ import java.lang.reflect.ParameterizedType
 
 
 @Dao
-abstract class CoreDao<T : CoreEntity> {
+abstract class BaseDao<T : BaseEntity> {
     companion object {
         private const val BASE_SOFT_DELETE_QUERY = """
             UPDATE %s 

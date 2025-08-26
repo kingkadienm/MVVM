@@ -2,6 +2,7 @@ package com.wangzs.module.me.repository
 
 import android.content.Context
 import com.wangzs.lib.base.BaseApplication
+import com.wangzs.lib.base.module.database.DatabaseInitializerManager
 import com.wangzs.lib.base.module.database.database.DatabaseBuilder
 import com.wangzs.lib.base.module.database.database.DatabaseConfig
 import com.wangzs.lib.base.module.database.extension.FlowExtensions.dealDataFlow
@@ -12,14 +13,14 @@ import kotlinx.coroutines.flow.Flow
 
 class UserRepository private constructor() {
 
-    private val database: UserDatabase by lazy {
-        DatabaseBuilder.build(
-            BaseApplication.getContext(), UserDatabase::class.java,
-            DatabaseConfig.defaultConfig(UserDatabase.DB_NAME)
-        )
+    private val userDatabase by lazy {
+        // 使用共享的数据库实例
+        DatabaseInitializerManager.getDatabaseInstance(UserDatabase::class.java)
+            ?: throw IllegalStateException("UserDatabase 尚未初始化，请先调用 DatabaseInitializerManager.initializeAllData()")
     }
+    private val userDao by lazy { userDatabase.getBaseDao() }
 
-    private val userDao: UserTestRoomDao by lazy { database.getBaseDao() }
+
 
     companion object {
         @Volatile

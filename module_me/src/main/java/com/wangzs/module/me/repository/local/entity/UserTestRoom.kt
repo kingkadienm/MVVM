@@ -1,7 +1,7 @@
 package com.wangzs.module.me.repository.local.entity
 
 import androidx.room.Entity
-import com.wangzs.lib.base.module.database.entity.CoreEntity
+import com.wangzs.lib.base.module.database.entity.BaseEntity
 
 /**
  * Describe:
@@ -16,4 +16,4 @@ data class UserTestRoom(
     var firstName: String,
     var lastName: String,
     var age: Int
-) : CoreEntity()
+) : BaseEntity()

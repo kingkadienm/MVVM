@@ -1,7 +1,7 @@
 package com.wangzs.module.me.repository.local.dao
 
 import androidx.room.*
-import com.wangzs.lib.base.module.database.dao.CoreDao
+import com.wangzs.lib.base.module.database.dao.BaseDao
 import com.wangzs.module.me.repository.local.entity.UserTestRoom
 
 
@@ -9,7 +9,7 @@ import com.wangzs.module.me.repository.local.entity.UserTestRoom
  * 用户 DAO 接口 - 继承 BaseRoomDao 并添加特定方法
  */
 @Dao
-abstract class UserTestRoomDao : CoreDao<UserTestRoom>() {
+abstract class UserTestRoomDao : BaseDao<UserTestRoom>() {
 
     @Insert
     abstract suspend  fun insertUserTestRoom(userTestRoom: UserTestRoom): Long

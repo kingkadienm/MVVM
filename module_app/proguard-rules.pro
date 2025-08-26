@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# 合并所有子模块的规则
+-include ../module_home/proguard-rules.pro
+-include ../module_main/proguard-rules.pro
+-include ../module_home/proguard-rules.pro
+-include ../module_me/proguard-rules.pro
+-include ../module_ai/proguard-rules.pro

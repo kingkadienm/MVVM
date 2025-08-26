@@ -27,7 +27,7 @@ import java.io.File
 /**
  * TabBarView
  *
- * @author [wangzs](mailto:wangzsdev@gmail.com)
+ * @author wangzs
  * @since 2022/8/20 14:43
  */
 class TabBarView(context: Context, attrs: AttributeSet?) : RelativeLayout(context, attrs) {

@@ -19,3 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.wangzs.module.me.UserDatabaseRegistry
+-keep class * implements com.wangzs.lib.base.module.database.DatabaseInitializerRegistry { *; }
