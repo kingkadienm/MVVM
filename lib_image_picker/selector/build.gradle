@@ -1,0 +1,28 @@
+apply from: rootProject.file('lib.build.gradle')
+
+android {
+    // versionCode 15
+    // versionName "3.1.4"
+    defaultConfig {
+        versionCode 15
+        versionName "3.1.4"
+    }
+}
+
+dependencies {
+    def Depends = [
+            apis               : rootProject.ext.imagePickerDepends.api,
+            implementations    : rootProject.ext.imagePickerDepends.implementations,
+            kapt               : rootProject.ext.imagePickerDepends.kapt,
+            compileOnly        : rootProject.ext.imagePickerDepends.compile,
+            testImplementations: rootProject.ext.imagePickerDepends.testImpl,
+    ]
+    Depends.apis.each { api it }
+    Depends.implementations.each { implementation it }
+    Depends.kapt.each { kapt it }
+    Depends.compileOnly.each { compileOnly it }
+    Depends.testImplementations.each { testImplementation it }
+}
+
+
+

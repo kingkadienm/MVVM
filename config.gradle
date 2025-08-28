@@ -1,10 +1,10 @@
 ext {
     // 构建版本
     kotlinVersion = getProperty('kotlin.version')
-    compileVersion = 33
+    compileVersion = 34
     buildToolsVersion = "30.0.3"
     minSdkVersion = 26
-    targetVersion = 33
+    targetVersion = 34
     // 生成APK版本
     versionCode = 3
     versionName = "1.0.3"
@@ -74,7 +74,16 @@ ext {
                     libs.google.material,
                     libs.glide.core,
             ],
-            implementations: [],
+            implementations: [
+                    libs.androidx.exifinterface,
+                    libs.androidx.viewpager2,
+                    libs.androidx.transition,
+                    libs.androidx.concurrent,
+                    libs.androidx.camera_core,
+                    libs.androidx.camera_camera2,
+                    libs.androidx.camera_view,
+                    libs.androidx.camera_lifecycle,
+            ],
             kapt           : [
                     libs.glide.compiler,
             ],

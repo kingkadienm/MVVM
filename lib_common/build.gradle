@@ -1,4 +1,4 @@
-apply from: "../lib.build.gradle"
+apply from: rootProject.file('lib.build.gradle')
 
 android {
 
@@ -9,7 +9,10 @@ dependencies {
     api project(":lib_base")
     api project(":lib_log")
     api project(":lib_net")
-//    api project(":lib_image_picker")
+    api project(":lib_image_picker:selector")
+    api project(":lib_image_picker:camerax")
+    api project(":lib_image_picker:compress")
+    api project(":lib_image_picker:ucrop")
 
     def Depends = [
             apis               : rootProject.ext.commonDepends.api,
