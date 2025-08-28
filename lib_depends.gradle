@@ -55,6 +55,10 @@ ext {
                     "footer_classics" : "io.github.scwang90:refresh-footer-classics:${getProperty('smart.version')}",
                     "footer_ball"     : "io.github.scwang90:refresh-footer-ball:${getProperty('smart.version')}",
             ],
+            autoService        : [
+                    "core"    : "com.google.auto.service:auto-service:1.1.1",
+                    "compiler": "com.google.auto.service:auto-service-annotations:1.1.1",
+            ],
             BaseAdapterHelper  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11",
             // 骨架屏
             skeleton           : "com.ethanhua:skeleton:1.1.2",

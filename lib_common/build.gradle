@@ -9,7 +9,7 @@ dependencies {
     api project(":lib_base")
     api project(":lib_log")
     api project(":lib_net")
-    api project(":lib_image_picker")
+//    api project(":lib_image_picker")
 
     def Depends = [
             apis               : rootProject.ext.commonDepends.api,

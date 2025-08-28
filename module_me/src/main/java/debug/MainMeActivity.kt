@@ -1,19 +1,14 @@
 package debug
 
 import android.view.View
-import com.google.gson.Gson
 import com.wangzs.lib.base.utils.ToastUtils
-import com.wangzs.lib.base.utils.ext.view.showToast
-import com.wangzs.lib.base.view.BaseFragment
 import com.wangzs.lib.base.view.BaseMvvmViewBindingActivity
-import com.wangzs.lib.log.KLog
 import com.wangzs.module.me.R
 import com.wangzs.module.me.activity.MoreRequestServerActivity
 import com.wangzs.module.me.activity.RoomTestActivity
 import com.wangzs.module.me.activity.SaveStateTestActivity
 import com.wangzs.module.me.databinding.FragmentMeMainBinding
 import com.wangzs.module.me.viewmodel.MainMeViewModel
-import com.ypx.imagepicker.demo.utils.ImagePickerHelper
 
 /**
  *
@@ -23,25 +18,10 @@ import com.ypx.imagepicker.demo.utils.ImagePickerHelper
  */
 class MainMeActivity : BaseMvvmViewBindingActivity<FragmentMeMainBinding, MainMeViewModel>() {
 
-    private var imagePickerHelper: ImagePickerHelper? = null
 
     override fun onBindLayout(): Int = R.layout.fragment_me_main
 
     override fun initView() {
-        val config = ImagePickerHelper.with(ImagePickerHelper.Config())
-            .setWeChat(true)
-            .setMimeType(0)
-            .setShowOriginal(true)
-            .setSave(true)
-            .setMulti(true)
-            .setMaxCount(6)
-            .build()
-        imagePickerHelper = ImagePickerHelper(
-            this, requireBinding().gridLayout,
-            { items ->
-                KLog.d(BaseFragment.TAG, "选择的照片数据" + Gson().toJson(items))
-            }, config
-        )
     }
 
     override fun initData() {
@@ -66,29 +46,11 @@ class MainMeActivity : BaseMvvmViewBindingActivity<FragmentMeMainBinding, MainMe
         }
         when (v?.id) {
             R.id.button_1 -> {
-                val config =
-                    ImagePickerHelper.with(ImagePickerHelper.Config())
-                        .setWeChat(true)
-                        .setMimeType(0)
-                        .setShowOriginal(true)
-                        .setSave(true)
-                        .setMulti(true)
-                        .build()
-                imagePickerHelper!!.setConfig(config)
-                "拍照模式设置成功".showToast()
             }
+
             R.id.button_2 -> {
-                val config =
-                    ImagePickerHelper.with(ImagePickerHelper.Config())
-                        .setWeChat(true)
-                        .setMimeType(1)
-                        .setShowOriginal(true)
-                        .setSave(true)
-                        .setMulti(true)
-                        .build()
-                imagePickerHelper!!.setConfig(config)
-                "视频模式设置成功".showToast()
             }
+
             R.id.button_3 -> {
                 val trim = requireBinding().editText.text.toString().trim()
                 if (trim.isBlank()) {
@@ -97,9 +59,11 @@ class MainMeActivity : BaseMvvmViewBindingActivity<FragmentMeMainBinding, MainMe
                 }
                 SaveStateTestActivity.start(mContext, trim)
             }
+
             R.id.button_4 -> {
                 RoomTestActivity.start(mContext)
             }
+
             R.id.button_5 -> {
                 MoreRequestServerActivity.start(mContext)
             }

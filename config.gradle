@@ -107,10 +107,13 @@ ext {
 
     // module.build.gradle
     moduleBuildDepends = [
-            api            : [],
+            api            : [
+                    libs.autoService.core
+            ],
             implementations: [],
             kapt           : [
                     libs.androidx.room.room_compiler,
+                    libs.autoService.compiler
             ],
             compile        : [],
             testImpl       : [],
