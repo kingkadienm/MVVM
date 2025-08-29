@@ -1,0 +1,11 @@
+apply from: rootProject.file('lib.build.gradle')
+
+android {
+
+}
+
+dependencies {
+    implementation libs.google.gson
+    implementation libs.google.material
+    implementation libs.androidx.appcompat
+}

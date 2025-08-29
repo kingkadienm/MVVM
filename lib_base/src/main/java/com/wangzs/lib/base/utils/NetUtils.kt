@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 
 import com.wangzs.lib.base.BaseApplication
+import com.wangzs.lib.utils.ToastUtils
 
 
 /**
@@ -23,7 +24,7 @@ object NetUtils {
     fun checkNetToast(): Boolean {
         val isNet = checkNet()
         if (!isNet) {
-            ToastUtils.showToast("网络不给力哦！")
+            ToastUtils.showLong("网络不给力哦！")
         }
         return isNet
     }

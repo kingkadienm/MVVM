@@ -1,8 +1,8 @@
 package debug
 
 import android.view.View
-import com.wangzs.lib.base.utils.ToastUtils
 import com.wangzs.lib.base.view.BaseMvvmViewBindingActivity
+import com.wangzs.lib.utils.ToastUtils
 import com.wangzs.module.me.R
 import com.wangzs.module.me.activity.MoreRequestServerActivity
 import com.wangzs.module.me.activity.RoomTestActivity
@@ -54,7 +54,7 @@ class MainMeActivity : BaseMvvmViewBindingActivity<FragmentMeMainBinding, MainMe
             R.id.button_3 -> {
                 val trim = requireBinding().editText.text.toString().trim()
                 if (trim.isBlank()) {
-                    ToastUtils.showToastCenter("输入内容不能为空")
+                    ToastUtils.showShort("输入内容不能为空")
                     return
                 }
                 SaveStateTestActivity.start(mContext, trim)

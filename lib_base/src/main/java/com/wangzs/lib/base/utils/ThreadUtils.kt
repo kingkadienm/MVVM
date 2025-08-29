@@ -3,7 +3,7 @@ package com.wangzs.lib.base.utils
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.wangzs.lib.base.utils.ToastUtils.showToast
+import com.wangzs.lib.utils.ToastUtils
 import java.util.concurrent.*
 
 /**
@@ -30,7 +30,7 @@ object ThreadUtils {
                     try {
                         runnable.run()
                     } catch (e: Exception) {
-                        showToast("线程池中的某个线程发生了问题，请查看控制台或者日志文件！。")
+                        ToastUtils.showShort("线程池中的某个线程发生了问题，请查看控制台或者日志文件！。")
                     }
                 }, name + System.currentTimeMillis()
             )

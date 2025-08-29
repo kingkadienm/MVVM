@@ -7,7 +7,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Looper
 import android.util.Log
-import com.wangzs.lib.base.utils.ToastUtils
+import com.wangzs.lib.utils.ToastUtils
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -59,7 +59,7 @@ private constructor() : Thread.UncaughtExceptionHandler {
         } else {
             // MobclickAgent.reportError(context, ex);
             // 退出程序
-            ToastUtils.showToast("发生异常，已重启应用")
+            ToastUtils.showShort("发生异常，已重启应用")
             // EnvironmentUtil.openApp(mContext, SplashActivity.class.getName());
             // Intent intent = new Intent(Intent.ACTION_MAIN);
             // intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -96,7 +96,7 @@ private constructor() : Thread.UncaughtExceptionHandler {
                 // Toast 显示需要出现在一个线程的消息队列中
                 Looper.prepare()
 
-                ToastUtils.showToast("程序异常，请重启应用")
+                ToastUtils.showShort("程序异常，请重启应用")
                 Looper.loop()
                 // 程序出现异常，下次程序进入默认值更改为我的主页
                 // SaveSharedPreference.setSharedPreferenceInt(mContext,

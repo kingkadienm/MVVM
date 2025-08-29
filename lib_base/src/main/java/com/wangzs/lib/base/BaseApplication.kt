@@ -6,7 +6,6 @@ import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
 import com.wangzs.lib.base.utils.ProcessUtils
 import com.wangzs.lib.base.utils.ThreadUtils
-import com.wangzs.lib.base.utils.ToastUtils
 import com.wangzs.lib.log.KLog
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -62,7 +61,6 @@ open class BaseApplication : Application() {
      */
     protected open fun initOnlyMainProcess() {
         KLog.init(BuildConfig.DEBUG)
-        ToastUtils.init(this)
 
         if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog()     // 打印日志
