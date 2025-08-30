@@ -7,10 +7,18 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Looper
 import android.util.Log
+import com.wangzs.lib.utils.PathUtils
 import com.wangzs.lib.utils.ToastUtils
-import java.io.*
+import java.io.File
+import java.io.FileOutputStream
+import java.io.FilenameFilter
+import java.io.PrintWriter
+import java.io.StringWriter
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Arrays
+import java.util.Date
+import java.util.Properties
+import java.util.TreeSet
 
 /**
  * 线程未捕获异常控制器是用来处理未捕获异常的。
@@ -106,9 +114,9 @@ private constructor() : Thread.UncaughtExceptionHandler {
         // 收集设备信息
         collectCrashDeviceInfo(mContext)
         // 保存错误报告文件
-        // saveCrashInfoToFile(ex);
+         saveCrashInfoToFile(ex);
         // 发送错误报告到服务器
-        // sendCrashReportsToServer(mContext);
+//         sendCrashReportsToServer(mContext);
         return true
     }
 
@@ -184,7 +192,7 @@ private constructor() : Thread.UncaughtExceptionHandler {
             val timestamp = SimpleDateFormat("yyyyMMddHHmmss").format(Date())
             val fileName = "crash-$timestamp$CRASH_REPORTER_EXTENSION"
             // 保存文件
-            val directory = File(EnvironmentUtils.Storage.getExternalCacheDir(mContext!!), "logs")
+            val directory = File(PathUtils.getExternalAppCachePath(), "crash")
             if (!directory.exists()) {
                 directory.mkdirs()
             }

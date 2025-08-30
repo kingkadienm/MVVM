@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Process
 import android.text.TextUtils
 import com.wangzs.lib.base.BaseApplication
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 
 object ProcessUtils {
 
@@ -29,7 +29,7 @@ object ProcessUtils {
                 val context = context
                 val currentProcessName = processName
                 field = TextUtils.equals(currentProcessName, context.packageName)
-                KLog.d(TAG, "isMainProcess $field processName: $currentProcessName")
+                LogUtils.d(TAG, "isMainProcess $field processName: $currentProcessName")
             }
             return field
         }
@@ -48,9 +48,9 @@ object ProcessUtils {
                         ReflectUtils.invokeMethod(ACTIVITY_THREAD, CURRENT_ACTIVITY_THREAD)
                     currentProcessName =
                         ReflectUtils.invokeMethod(activityThread!!, GET_PROCESS_NAME) as String?
-                    KLog.d(TAG, "getProcessName from ActivityThread: $currentProcessName")
+                    LogUtils.d(TAG, "getProcessName from ActivityThread: $currentProcessName")
                 } catch (tr: Throwable) {
-                    KLog.e(TAG, "getProcessName error!", tr)
+                    LogUtils.e(TAG, "getProcessName error!", tr)
                 }
                 if (currentProcessName == null) {
                     val context = context
@@ -64,7 +64,7 @@ object ProcessUtils {
                     }
                 }
             } catch (e: Exception) {
-                KLog.e(TAG, "getProcessName error", e)
+                LogUtils.e(TAG, "getProcessName error", e)
             }
             return currentProcessName
         }

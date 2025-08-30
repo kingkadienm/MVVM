@@ -7,7 +7,7 @@ import com.wangzs.lib.base.utils.ext.view.showToast
 import com.wangzs.lib.base.view.BaseMvvmRefreshDataBindingFragment
 import com.wangzs.lib.common.utils.EnvironmentUtils
 import com.wangzs.lib.domain.entity.Demo
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.lib.net.utils.ext.launch
 import com.wangzs.lib.net.utils.ext.observe
@@ -61,7 +61,6 @@ class MainHomeFragment :
 
     override fun initData() {
         onRefreshEvent()
-        KLog.d(TAG, EnvironmentUtils.Storage.getCachePath(mContext))
     }
 
     var firstLoad = true

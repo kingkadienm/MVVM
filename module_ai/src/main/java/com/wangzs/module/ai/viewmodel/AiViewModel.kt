@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.wangzs.lib.base.mvvm.viewmodel.BaseViewModel
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.module.ai.bean.GenerateRequest
 import com.wangzs.module.ai.repository.AiDataRepository
 import kotlinx.coroutines.flow.catch
@@ -77,7 +77,7 @@ class AiViewModel(state: SavedStateHandle) : BaseViewModel() {
         val totalSegments = getTotalSegments(cleanText, segmentLength)
         for (i in 0 until totalSegments) {
             val segment = getTextSegment(cleanText, i, segmentLength)
-            KLog.e(TAG, "分段 ${i + 1}/$totalSegments: $segment")
+            LogUtils.e(TAG, "分段 ${i + 1}/$totalSegments: $segment")
         }
 
     }

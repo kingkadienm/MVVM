@@ -7,7 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 

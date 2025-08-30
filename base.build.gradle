@@ -6,6 +6,7 @@ kapt {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
+def appVersion = rootProject.ext.versionName
 
 android {
     compileSdkVersion rootProject.ext.compileVersion
@@ -23,10 +24,10 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "boolean", 'IS_DEBUG', 'true'
+            buildConfigField("String", "APP_VERSION", "\"" + appVersion + "\"")
         }
         release {
-            buildConfigField "boolean", 'IS_DEBUG', 'false'
+            buildConfigField("String", "APP_VERSION", "\"" + appVersion + "\"")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

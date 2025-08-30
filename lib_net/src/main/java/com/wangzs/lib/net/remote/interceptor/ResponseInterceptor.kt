@@ -2,7 +2,7 @@ package com.wangzs.lib.net.remote.interceptor
 
 import android.text.TextUtils
 import com.wangzs.lib.base.utils.ext.view.showToast
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.config.Encoding
 import com.wangzs.lib.net.config.contentTypeValue
 import com.wangzs.lib.net.error.ApiException
@@ -48,7 +48,7 @@ class ResponseInterceptor : Interceptor {
             val ex = ApiException(response.code)
             ex.message = errorManager.getError(response.code).description
             ex.message.showToast()
-            KLog.e(TAG, ex.message, ex)
+            LogUtils.e(TAG, ex.message, ex)
             throw ex
         }
 

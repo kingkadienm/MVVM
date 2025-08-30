@@ -6,6 +6,7 @@ import android.view.Gravity
 import com.wangzs.lib.base.BaseApplication
 import com.wangzs.lib.base.module.database.DatabaseInitializerManager
 import com.wangzs.lib.base.module.database.database.DatabaseBuilder
+import com.wangzs.lib.common.utils.CrashHandler
 import com.wangzs.lib.net.config.NetConfig
 import com.wangzs.lib.net.config.URL_EDITH
 import com.wangzs.lib.net.config.URL_MAIN
@@ -44,7 +45,7 @@ open class ModuleApplication : BaseApplication() {
             .setGlobalTag("MyApp")   // 设置全局日志标签
             .setLogHeadSwitch(true)  // 设置日志头部信息显示
             .setLog2FileSwitch(true) // 设置是否把日志写入文件
-            .setDir("${Environment.getExternalStorageDirectory()}/MyApp/logs")
+//            .setDir("${Environment.getExternalStorageDirectory()}/MyApp/logs")
             .setFilePrefix("app_log")
             .setFileFilter(LogUtils.I) // 设置文件日志过滤级别
             .setBorderSwitch(true)   // 设置日志边框开关
@@ -66,6 +67,7 @@ open class ModuleApplication : BaseApplication() {
                 Log.d("App", "数据库初始化完成，耗时: ${duration}ms")
                 // 通知所有观察者数据库已就绪
                 notifyDatabaseReady()
+                CrashHandler.instance.init(this@ModuleApplication)
             } catch (e: Exception) {
                 Log.e("App", "数据库初始化失败", e)
             }

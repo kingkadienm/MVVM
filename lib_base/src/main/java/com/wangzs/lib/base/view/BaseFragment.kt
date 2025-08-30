@@ -25,7 +25,7 @@ import com.wangzs.lib.base.widget.LoadingInitView
 import com.wangzs.lib.base.widget.LoadingTransView
 import com.wangzs.lib.base.widget.NetErrorView
 import com.wangzs.lib.base.widget.NoDataView
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -77,7 +77,7 @@ abstract class BaseFragment : Fragment(), BaseView {
         mActivity = activity as AppCompatActivity?
 
         val totalTime = SystemClock.elapsedRealtime() - startTime
-        KLog.e(TAG, "onCreate: 当前进入的Fragment: $javaClass 初始化时间:$totalTime ms")
+        LogUtils.e(TAG, "onCreate: 当前进入的Fragment: $javaClass 初始化时间:$totalTime ms")
     }
 
     override fun onCreateView(
@@ -146,9 +146,9 @@ abstract class BaseFragment : Fragment(), BaseView {
      */
     private fun lazyLoad() {
         //这里进行双重标记判断,必须确保onCreateView加载完毕且页面可见,才加载数据
-        KLog.v("MYTAG", "lazyLoad start...")
-        KLog.v("MYTAG", "isViewCreated:$isViewCreated")
-        KLog.v("MYTAG", "isViewVisable:$isViewVisable")
+        LogUtils.v("MYTAG", "lazyLoad start...")
+        LogUtils.v("MYTAG", "isViewCreated:$isViewCreated")
+        LogUtils.v("MYTAG", "isViewVisable:$isViewVisable")
         if (isViewCreated && isViewVisable) {
             Log.d(TAG, "lazyLoad: Successful")
             initData()

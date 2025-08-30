@@ -5,7 +5,6 @@ android {
 
 dependencies {
 
-    api project(":lib_log")
     api project(":lib_utils")
 
     def Depends = [

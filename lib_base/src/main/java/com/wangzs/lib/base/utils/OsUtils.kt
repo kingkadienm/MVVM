@@ -2,7 +2,7 @@ package com.wangzs.lib.base.utils
 
 import android.os.Build
 import android.text.TextUtils
-import com.wangzs.lib.log.KLog.e
+import com.wangzs.lib.utils.LogUtils.e
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

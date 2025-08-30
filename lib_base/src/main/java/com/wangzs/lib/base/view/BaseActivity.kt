@@ -20,7 +20,7 @@ import com.wangzs.lib.base.widget.LoadingInitView
 import com.wangzs.lib.base.widget.LoadingTransView
 import com.wangzs.lib.base.widget.NetErrorView
 import com.wangzs.lib.base.widget.NoDataView
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -72,7 +72,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         initListener()
 
         val totalTime = SystemClock.elapsedRealtime() - startTime
-        KLog.e(TAG, "onCreate: 当前进入的Activity: $localClassName 初始化时间:$totalTime ms")
+        LogUtils.e(TAG, "onCreate: 当前进入的Activity: $localClassName 初始化时间:$totalTime ms")
     }
 
     protected open fun initFullScreen() {

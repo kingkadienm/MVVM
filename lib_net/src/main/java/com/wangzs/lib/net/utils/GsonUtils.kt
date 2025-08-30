@@ -6,7 +6,7 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import java.lang.Exception
 import java.lang.reflect.Type
 import java.util.ArrayList
@@ -43,7 +43,7 @@ object GsonUtils {
         try {
             return gson!!.fromJson(json, cls)
         } catch (e: Exception) {
-            KLog.e("GsonUtils", e.message ?: "")
+            LogUtils.e("GsonUtils", e.message ?: "")
         }
         return null
     }
@@ -113,7 +113,7 @@ object GsonUtils {
         try {
             return gson!!.fromJson(json, object : TypeToken<List<Map<String, T>>>() {}.type)
         } catch (e: Exception) {
-            KLog.e("", e.message ?: "")
+            LogUtils.e("", e.message ?: "")
         }
         return null
     }
@@ -126,7 +126,7 @@ object GsonUtils {
         try {
             return gson!!.fromJson(json, object : TypeToken<Map<String?, T>?>() {}.type)
         } catch (e: Exception) {
-            KLog.e("GsonUtils", e.message ?: "")
+            LogUtils.e("GsonUtils", e.message ?: "")
         }
         return null
     }

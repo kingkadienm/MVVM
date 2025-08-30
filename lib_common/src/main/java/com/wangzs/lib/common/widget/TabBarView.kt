@@ -20,7 +20,7 @@ import com.wangzs.lib.common.utils.VibrateTool
 import com.wangzs.lib.common.utils.ext.getCompatColor
 import com.wangzs.lib.common.utils.ext.loadImgFile
 import com.wangzs.lib.common.utils.ext.view.toVisibleOrGone
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import kotlinx.coroutines.*
 import java.io.File
 
@@ -58,14 +58,14 @@ class TabBarView(context: Context, attrs: AttributeSet?) : RelativeLayout(contex
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             var firstSelected = true
             override fun onTabReselected(tab: TabLayout.Tab?) {
-                KLog.d(
+                LogUtils.d(
                     TAG,
                     "[TabBarView]: onTabReselected:${tab?.position}, from:${tab.toString()}"
                 )
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                KLog.d(
+                LogUtils.d(
                     TAG,
                     "[TabBarView]: onTabUnselected:${tab?.position}, from::${tab.toString()}"
                 )
@@ -77,7 +77,7 @@ class TabBarView(context: Context, attrs: AttributeSet?) : RelativeLayout(contex
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                KLog.d(TAG, "[TabBarView]: onTabSelected:${tab?.position}, from::${tab.toString()}")
+                LogUtils.d(TAG, "[TabBarView]: onTabSelected:${tab?.position}, from::${tab.toString()}")
                 tab?.let {
                     val tabBarItemView = tab.customView as TabBarItemView
                     val listBean = tab.tag as? TabBarBean.ItemBean ?: return
@@ -135,7 +135,7 @@ class TabBarView(context: Context, attrs: AttributeSet?) : RelativeLayout(contex
             items.also { tabs ->
                 if (tabs.size !in 2..5) {
                     ToastUtils.showShort("Tab bar view numbers is between 2 and 5")
-                    KLog.e(TAG, "[TabBarView]: Tab bar view is between 2 and 5")
+                    LogUtils.e(TAG, "[TabBarView]: Tab bar view is between 2 and 5")
                     return
                 }
                 tabs.forEach { tab ->

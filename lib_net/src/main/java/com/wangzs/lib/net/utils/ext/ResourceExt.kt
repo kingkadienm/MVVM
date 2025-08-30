@@ -1,7 +1,7 @@
 package com.wangzs.lib.net.utils.ext
 
 import android.util.Log
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.BuildConfig
 import com.wangzs.lib.net.dto.Resource
 
@@ -30,13 +30,13 @@ fun <T> Resource<T>.launch(
         is Resource.Loading -> loading?.invoke()
         else -> {
             if (BuildConfig.DEBUG) {
-                KLog.e(
+                LogUtils.e(
                     "Resource", "---------> errorCode: $errorCode " + Log.getStackTraceString(
                         Throwable("Just print")
                     )
                 )
             } else {
-                KLog.e("Resource", "---------> errorCode: $errorCode")
+                LogUtils.e("Resource", "---------> errorCode: $errorCode")
             }
             fail?.let { it(errorCode) }
         }

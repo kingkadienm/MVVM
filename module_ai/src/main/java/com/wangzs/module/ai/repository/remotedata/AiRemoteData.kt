@@ -1,7 +1,7 @@
 package com.wangzs.module.ai.repository.remotedata
 
 import com.google.gson.Gson
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.remote.RemoteData
 import com.wangzs.module.ai.bean.GenerateRequest
 import com.wangzs.module.ai.bean.GenerateResponse

@@ -4,7 +4,7 @@ import android.text.TextUtils
 import android.util.Log
 import com.wangzs.lib.base.utils.ext.view.showToast
 import com.wangzs.lib.domain.base.BaseResponse
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.BuildConfig
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.lib.net.error.FORBIDDEN
@@ -66,7 +66,7 @@ abstract class AbsRemoteDataSource {
                  */
                 if (BuildConfig.DEBUG) {
                     e.message?.showToast()
-                    KLog.e(TAG, Log.getStackTraceString(e))
+                    LogUtils.e(TAG, Log.getStackTraceString(e))
                 }
                 errorCode = NETWORK_ERROR
             }

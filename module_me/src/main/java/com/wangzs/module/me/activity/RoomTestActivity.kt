@@ -11,7 +11,7 @@ import com.wangzs.lib.base.view.BaseFragment
 import com.wangzs.lib.base.view.BaseMvvmRefreshDataBindingActivity
 import com.wangzs.lib.common.utils.VibrateTool
 import com.wangzs.lib.common.widget.CommonDialogFragment
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.module.me.repository.local.entity.UserTestRoom
 import com.wangzs.lib.net.utils.ext.launch
@@ -222,7 +222,7 @@ class RoomTestActivity :
         when (status) {
             is Resource.Success -> status.data?.let { bindListData2(ArrayList(it)) }
             is Resource.DataError -> {
-                status.errorCode.let { KLog.e(BaseFragment.TAG, "--------->$it") }
+                status.errorCode.let { LogUtils.e(BaseFragment.TAG, "--------->$it") }
             }
             else -> {}
         }

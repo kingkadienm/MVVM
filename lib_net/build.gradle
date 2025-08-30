@@ -7,7 +7,6 @@ android {
 dependencies {
 
     api project(":lib_base")
-    api project(":lib_log")
     api project(':lib_domain')
 
     def Depends = [

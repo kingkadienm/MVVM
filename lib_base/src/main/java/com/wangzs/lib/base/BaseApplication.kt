@@ -4,12 +4,11 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
-import com.wangzs.lib.base.utils.ProcessUtils
-import com.wangzs.lib.base.utils.ThreadUtils
-import com.wangzs.lib.log.KLog
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.wangzs.lib.base.utils.ProcessUtils
+import com.wangzs.lib.base.utils.ThreadUtils
 
 /**
  * 初始化应用程序
@@ -60,7 +59,6 @@ open class BaseApplication : Application() {
      * 主线程中初始化内容
      */
     protected open fun initOnlyMainProcess() {
-        KLog.init(BuildConfig.DEBUG)
 
         if (BuildConfig.DEBUG) {           // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog()     // 打印日志

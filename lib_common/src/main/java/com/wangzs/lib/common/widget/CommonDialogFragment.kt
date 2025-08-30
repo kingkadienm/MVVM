@@ -14,7 +14,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.wangzs.lib.common.R
 import com.wangzs.lib.common.utils.DisplayUtils
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 
 /**
  * 公共弹窗
@@ -38,7 +38,7 @@ class CommonDialogFragment : DialogFragment() {
     override fun dismiss() {
         super.dismiss()
         isShowing = false
-        KLog.v(TAG, "dismiss start...")
+        LogUtils.v(TAG, "dismiss start...")
     }
 
     fun show(fragmentManager: FragmentManager) {
@@ -181,7 +181,7 @@ class CommonDialogFragment : DialogFragment() {
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
         isShowing = false
-        KLog.v(TAG, "onCancel start...")
+        LogUtils.v(TAG, "onCancel start...")
     }
 
     companion object {

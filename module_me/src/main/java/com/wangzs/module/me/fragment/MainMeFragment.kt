@@ -70,6 +70,7 @@ class MainMeFragment : BaseMvvmViewBindingFragment<FragmentMeMainBinding, MainMe
 //                        override fun onCancel() {
 //                        }
 //                    })
+                throw NullPointerException("空指针了")
             }
             R.id.button_2 -> {
                 PictureSelector.create(this)

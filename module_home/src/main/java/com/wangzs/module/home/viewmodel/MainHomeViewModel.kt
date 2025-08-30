@@ -48,7 +48,7 @@ class MainHomeViewModel(state: SavedStateHandle) : BaseRefreshViewModel() {
             }
             // 单个请求示例
             /*homeDataRepository.requestRecipes().collect {
-                KLog.d(TAG, it.toJson())
+                LogUtils.d(TAG, it.toJson())
             }*/
         }
     }

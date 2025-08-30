@@ -2,7 +2,7 @@ package com.wangzs.lib.net.utils
 
 import android.net.Uri
 import android.util.LruCache
-import com.wangzs.lib.log.KLog
+import com.wangzs.lib.utils.LogUtils
 
 /**
  *
@@ -23,7 +23,7 @@ object UrlUtils {
             uri = Uri.parse(url)
             sCachedUriMap.put(url, uri)
         } catch (e: Throwable) {
-            KLog.e(TAG, "parse url exception!", e)
+            LogUtils.e(TAG, "parse url exception!", e)
         }
         return uri
     }
@@ -62,7 +62,7 @@ object UrlUtils {
             }
             return result
         } catch (e: Throwable){
-            KLog.e(TAG, "getCORSUrl error!", e)
+            LogUtils.e(TAG, "getCORSUrl error!", e)
         }
         return null
     }
