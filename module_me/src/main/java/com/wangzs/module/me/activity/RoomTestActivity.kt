@@ -6,21 +6,21 @@ import android.view.animation.AnimationUtils
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.wangzs.lib.base.module.constons.ARouteConstants
-import com.wangzs.lib.base.utils.ThreadUtils
+import com.wangzs.lib.base.utils.CoroutineUtils
 import com.wangzs.lib.base.view.BaseFragment
 import com.wangzs.lib.base.view.BaseMvvmRefreshDataBindingActivity
 import com.wangzs.lib.common.utils.VibrateTool
 import com.wangzs.lib.common.widget.CommonDialogFragment
-import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.dto.Resource
-import com.wangzs.module.me.repository.local.entity.UserTestRoom
 import com.wangzs.lib.net.utils.ext.launch
 import com.wangzs.lib.net.utils.ext.observe
+import com.wangzs.lib.utils.LogUtils
 import com.wangzs.module.me.BR
 import com.wangzs.module.me.R
 import com.wangzs.module.me.activity.viewmodel.RoomTestViewModel
 import com.wangzs.module.me.adapter.RoomTestAdapter
 import com.wangzs.module.me.databinding.ActivityRoomTestBinding
+import com.wangzs.module.me.repository.local.entity.UserTestRoom
 import kotlin.random.Random
 import kotlin.random.nextInt
 
@@ -202,7 +202,7 @@ class RoomTestActivity :
         // 为了展示骨架屏
         if (firstLoad) {
             firstLoad = false
-            ThreadUtils.runOnUiThread({ mViewModel.refreshData() }, 1000)
+            CoroutineUtils.runOnUiThreadDelayed(1000,{mViewModel.refreshData() })
         } else {
             mViewModel.refreshData()
         }

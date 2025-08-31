@@ -1,5 +1,6 @@
 package com.wangzs.lib.net.remote.interceptor
 
+import com.wangzs.lib.base.AppConfig
 import com.wangzs.lib.net.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -10,7 +11,7 @@ class CustomLoggingInterceptor : Interceptor {
     private val loggingInterceptor = HttpLoggingInterceptor()
     
     init {
-        if (BuildConfig.DEBUG) {
+        if (AppConfig.isLogEnable()) {
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         } else {
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC

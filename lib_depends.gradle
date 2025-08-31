@@ -1,7 +1,15 @@
 ext {
+    kotlinVersion = "1.7.0"
+    kotlinCoroutines = "1.6.4"
+    retrofit2Version = "2.9.0"
+    glideVersion = "4.14.2"
+    arouterVersion = "1.5.2"
+    moshiVersion = "1.14.0"
+    smartVersion = "2.0.5"
+
     libs = [
             kotlin             : [
-                    coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${getProperty('kotlin.coroutines')}",
+                    coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinCoroutines}",
             ],
             androidx           : [
                     core            : "androidx.core:core-ktx:${kotlinVersion}",
@@ -34,34 +42,34 @@ ext {
                     gson    : 'com.google.code.gson:gson:2.10'
             ],
             retrofit2          : [
-                    retrofit2          : "com.squareup.retrofit2:retrofit:${getProperty('retrofit2.version')}",
-                    converter_moshi    : "com.squareup.retrofit2:converter-moshi:${getProperty('retrofit2.version')}",
-                    converter_gson     : "com.squareup.retrofit2:converter-gson:${getProperty('retrofit2.version')}",
+                    retrofit2          : "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+                    converter_moshi    : "com.squareup.retrofit2:converter-moshi:${retrofit2Version}",
+                    converter_gson     : "com.squareup.retrofit2:converter-gson:${retrofit2Version}",
                     logging_interceptor: 'com.squareup.okhttp3:logging-interceptor:4.9.0',
             ],
             glide              : [
-                    "core"           : "com.github.bumptech.glide:glide:${getProperty('glide.version')}",
-                    "compiler"       : "com.github.bumptech.glide:compiler:${getProperty('glide.version')}",
+                    "core"           : "com.github.bumptech.glide:glide:${glideVersion}",
+                    "compiler"       : "com.github.bumptech.glide:compiler:${glideVersion}",
                     // glide高斯模糊
                     "transformations": "jp.wasabeef:glide-transformations:4.3.0"
             ],
             arouter            : [
-                    "core"    : "com.alibaba:arouter-api:${getProperty('arouter.version')}",
-                    "compiler": "com.alibaba:arouter-compiler:${getProperty('arouter.version')}",
+                    "core"    : "com.alibaba:arouter-api:${arouterVersion}",
+                    "compiler": "com.alibaba:arouter-compiler:${arouterVersion}",
             ],
             moshi              : [
-                    "core"          : "com.squareup.moshi:moshi-kotlin:${getProperty('moshi.version')}",
-                    "kotlin_codegen": "com.squareup.moshi:moshi-kotlin-codegen:${getProperty('moshi.version')}",
+                    "core"          : "com.squareup.moshi:moshi-kotlin:${moshiVersion}",
+                    "kotlin_codegen": "com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}",
             ],
             smart              : [
-                    "layout_kernel"   : "io.github.scwang90:refresh-layout-kernel:${getProperty('smart.version')}",
-                    "header_classics" : "io.github.scwang90:refresh-header-classics:${getProperty('smart.version')}",
-                    "header_radar"    : "io.github.scwang90:refresh-header-radar:${getProperty('smart.version')}",
-                    "header_falsify"  : "io.github.scwang90:refresh-header-falsify:${getProperty('smart.version')}",
-                    "header_material" : "io.github.scwang90:refresh-header-material:${getProperty('smart.version')}",
-                    "header_two_level": "io.github.scwang90:refresh-header-material:${getProperty('smart.version')}",
-                    "footer_classics" : "io.github.scwang90:refresh-footer-classics:${getProperty('smart.version')}",
-                    "footer_ball"     : "io.github.scwang90:refresh-footer-ball:${getProperty('smart.version')}",
+                    "layout_kernel"   : "io.github.scwang90:refresh-layout-kernel:${smartVersion}",
+                    "header_classics" : "io.github.scwang90:refresh-header-classics:${smartVersion}",
+                    "header_radar"    : "io.github.scwang90:refresh-header-radar:${smartVersion}",
+                    "header_falsify"  : "io.github.scwang90:refresh-header-falsify:${smartVersion}",
+                    "header_material" : "io.github.scwang90:refresh-header-material:${smartVersion}",
+                    "header_two_level": "io.github.scwang90:refresh-header-material:${smartVersion}",
+                    "footer_classics" : "io.github.scwang90:refresh-footer-classics:${smartVersion}",
+                    "footer_ball"     : "io.github.scwang90:refresh-footer-ball:${smartVersion}",
             ],
             autoService        : [
                     "core"    : "com.google.auto.service:auto-service:1.1.1",

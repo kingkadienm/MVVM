@@ -16,7 +16,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "BaseDemo"
+rootProject.name = "AndroidProject"
 include ':module_me'
 include ':module_home'
 include ':module_main'

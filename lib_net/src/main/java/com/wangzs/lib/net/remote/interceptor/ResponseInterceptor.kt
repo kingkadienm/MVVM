@@ -2,20 +2,17 @@ package com.wangzs.lib.net.remote.interceptor
 
 import android.text.TextUtils
 import com.wangzs.lib.base.utils.ext.view.showToast
-import com.wangzs.lib.utils.LogUtils
-import com.wangzs.lib.net.config.Encoding
-import com.wangzs.lib.net.config.contentTypeValue
 import com.wangzs.lib.net.error.ApiException
 import com.wangzs.lib.net.error.NULL_DATA
 import com.wangzs.lib.net.error.PARSE_ERROR
 import com.wangzs.lib.net.error.mapper.ErrorManager
 import com.wangzs.lib.net.error.mapper.ErrorMapper
+import com.wangzs.lib.utils.LogUtils
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.json.JSONObject
-import java.nio.charset.Charset
 
 /**
  * Describe:
@@ -61,7 +58,7 @@ class ResponseInterceptor : Interceptor {
             val message = jsonObject.getString("message")
             if (0 == status) {
                 response.newBuilder()
-                    .body(body.toResponseBody(contentTypeValue.toMediaTypeOrNull()))
+                    .body(body.toResponseBody("application/json".toMediaTypeOrNull()))
                     .build()
             } else {
                 throw ApiException(status, message ?: "")
@@ -75,6 +72,6 @@ class ResponseInterceptor : Interceptor {
         val source = response.body!!.source()
         source.request(Long.MAX_VALUE)
         val buffer = source.buffer
-        return buffer.clone().readString(Charset.forName(Encoding))
+        return buffer.clone().readString(Charsets.UTF_8)
     }
 }

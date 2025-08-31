@@ -4,7 +4,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.wangzs.lib.base.mvvm.viewmodel.BaseRefreshViewModel
 import com.wangzs.lib.domain.entity.Demo
-import com.wangzs.lib.net.BaseDataRepository
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.module.me.repository.UserRepository
 import kotlinx.coroutines.flow.Flow

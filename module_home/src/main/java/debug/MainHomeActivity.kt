@@ -1,6 +1,6 @@
 package debug
 
-import com.wangzs.lib.base.utils.ThreadUtils
+import com.wangzs.lib.base.utils.CoroutineUtils
 import com.wangzs.lib.base.view.BaseMvvmRefreshDataBindingActivity
 import com.wangzs.lib.domain.entity.Demo
 import com.wangzs.lib.net.dto.Resource
@@ -56,7 +56,7 @@ class MainHomeActivity :
         // 为了展示骨架屏
         if (firstLoad) {
             firstLoad = false
-            ThreadUtils.runOnUiThread({ mViewModel.refreshData() }, 1000)
+            CoroutineUtils.runOnUiThreadDelayed(1000,{mViewModel.refreshData() })
         } else {
             mViewModel.refreshData()
         }

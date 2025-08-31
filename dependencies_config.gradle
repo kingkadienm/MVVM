@@ -1,6 +1,5 @@
 ext {
     // 构建版本
-    kotlinVersion = getProperty('kotlin.version')
     compileVersion = 34
     buildToolsVersion = "30.0.3"
     minSdkVersion = 26
@@ -8,7 +7,7 @@ ext {
     // 生成APK版本
     versionCode = 3
     versionName = "1.0.3"
-
+    applicationId = "com.wangzs.android"
     apply from: 'lib_depends.gradle'
 
     baseDepends = [

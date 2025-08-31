@@ -2,7 +2,6 @@ package com.wangzs.module.ai.repository
 
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
-import com.wangzs.lib.net.BaseDataRepository
 import com.wangzs.module.ai.bean.GenerateRequest
 import com.wangzs.module.ai.bean.GenerateResponse
 import com.wangzs.module.ai.repository.remotedata.AiRemoteData
@@ -13,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 import okhttp3.ResponseBody
 import retrofit2.Response
 
-class AiDataRepository : BaseDataRepository(), AiDataRepositorySource {
+class AiDataRepository :   AiDataRepositorySource {
     private val aiRemoteData by lazy { AiRemoteData() }
 
     override   fun generateStream(request: GenerateRequest): Flow<String> {

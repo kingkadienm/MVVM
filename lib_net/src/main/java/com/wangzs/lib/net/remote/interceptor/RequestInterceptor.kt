@@ -1,14 +1,10 @@
 package com.wangzs.lib.net.remote.interceptor
 
 import android.util.Log
-import com.wangzs.lib.net.config.contentType
-import com.wangzs.lib.net.config.contentTypeValue
 import com.wangzs.lib.net.config.getConfigForDomain
 import com.wangzs.lib.net.utils.UrlUtils
-import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response
-import java.util.concurrent.TimeUnit
 
 /**
  * Describe:
@@ -31,9 +27,10 @@ class RequestInterceptor : Interceptor {
         val newRequestBuilder = original.newBuilder()
             // .removeHeader("User-Agent")
             // .addHeader("User-Agent", "dh-net-okhttp")
-//            .header(contentType, contentTypeValue)
+            //const val contentType = "Content-Type"
+            //const val contentTypeValue = "application/json"
+            //const val Encoding = "UTF-8"
             .header("Content-Type", "application/json") // 显式设置
-//            .header("Accept", "application/json")        // 显式设置
             .method(original.method, original.body)
 
 

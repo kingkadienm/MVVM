@@ -9,10 +9,10 @@ android {
 
     signingConfigs {
         release {
-            keyAlias ALIAS_NAME
-            keyPassword ALIAS_PASS
-            storeFile file(KEY_PATH)
-            storePassword KAY_PASS
+            storeFile file(StoreFile)
+            storePassword StorePassword
+            keyAlias KeyAlias
+            keyPassword KeyPassword
             v1SigningEnabled true
             v2SigningEnabled true
         }
@@ -20,31 +20,17 @@ android {
 
     defaultConfig {
         if (!isModule.toBoolean()) {
-            applicationId "com.wangzs.basedemo"
+            applicationId rootProject.ext.applicationId
         }
         multiDexEnabled true
 
         ndk {
-            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+//            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
 
         manifestPlaceholders = [
                 PACKAGE_NAME           : applicationId == null ? "" : applicationId,
-                JPUSH_PKGNAME          : applicationId == null ? "" : applicationId,
-                JPUSH_APPKEY           : "", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL          : "developer-default", //暂时填写默认值即可.
-
-                BAIDU_SPEECH_APP_ID    : "",//百度语音技术APPID
-                BAIDU_SPEECH_API_KEY   : "",//百度语音技术APPKEY
-                BAIDU_SPEECH_SECRET_KEY: "",//百度语音技术SECRET_KEY
-                BAIDU_LBSAPI_API_KEY   : "",//百度地图KEY
-                BAIDU_TUISONG_API_KEY  : "",//百度推送
-                GAODE_APIKEY           : "",//高德APPKEY
-
-                EASEMOB_APPKEY         : "#basedemo",//环信APPKEY
-
-                UMENG_APPKEY           : "",//友盟APPKEY
-                UMENG_CHANNEL          : "",//友盟
         ]
         signingConfig signingConfigs.release
     }

@@ -1,15 +1,14 @@
 package com.wangzs.lib.base.module
 
-import android.os.Environment
 import android.util.Log
 import android.view.Gravity
+import com.wangzs.lib.base.AppConfig
 import com.wangzs.lib.base.BaseApplication
 import com.wangzs.lib.base.module.database.DatabaseInitializerManager
 import com.wangzs.lib.base.module.database.database.DatabaseBuilder
+import com.wangzs.lib.common.umeng.UmengClient
 import com.wangzs.lib.common.utils.CrashHandler
 import com.wangzs.lib.net.config.NetConfig
-import com.wangzs.lib.net.config.URL_EDITH
-import com.wangzs.lib.net.config.URL_MAIN
 import com.wangzs.lib.net.config.domainConfigsInit
 import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.utils.ToastUtils
@@ -36,12 +35,16 @@ open class ModuleApplication : BaseApplication() {
         DatabaseInitializerManager.autoDiscoverInitializers()
         // 异步初始化所有模块数据
         initializeDatabases()
+    }
+
+    override fun initInLowPriorityThread() {
+        super.initInLowPriorityThread()
         //初始化lib_utils
         Utils.init(this)
         // 初始化 LogUtils
         LogUtils.getConfig()
-            .setLogSwitch(BuildConfig.DEBUG)      // 设置日志总开关
-            .setConsoleSwitch(BuildConfig.DEBUG)  // 设置控制台日志开关
+            .setLogSwitch(AppConfig.isLogEnable())      // 设置日志总开关
+            .setConsoleSwitch(AppConfig.isLogEnable())  // 设置控制台日志开关
             .setGlobalTag("MyApp")   // 设置全局日志标签
             .setLogHeadSwitch(true)  // 设置日志头部信息显示
             .setLog2FileSwitch(true) // 设置是否把日志写入文件
@@ -56,6 +59,8 @@ open class ModuleApplication : BaseApplication() {
         //初始Toast
         val defaultMaker = ToastUtils.getDefaultMaker()
         defaultMaker.setGravity(Gravity.CENTER,0,0)
+        CrashHandler.instance.init(this@ModuleApplication)
+        UmengClient.init(this@ModuleApplication, AppConfig.isLogEnable())
     }
 
     private fun initializeDatabases() {
@@ -67,7 +72,6 @@ open class ModuleApplication : BaseApplication() {
                 Log.d("App", "数据库初始化完成，耗时: ${duration}ms")
                 // 通知所有观察者数据库已就绪
                 notifyDatabaseReady()
-                CrashHandler.instance.init(this@ModuleApplication)
             } catch (e: Exception) {
                 Log.e("App", "数据库初始化失败", e)
             }
@@ -80,17 +84,12 @@ open class ModuleApplication : BaseApplication() {
 
     private fun initNet() {
         domainConfigsInit(this) {
-            addConfig(URL_MAIN, NetConfig.Builder().apply {
+            addConfig(AppConfig.getHostUrl(), NetConfig.Builder().apply {
                 setDefaultTimeout(5_000)
-            })
-            addConfig(URL_EDITH, NetConfig.Builder().apply {
-                enableHttps(true)
-                setDefaultTimeout(6_000)
             })
             addConfig("http://192.168.1.12:11434", NetConfig.Builder().apply {
                 setDefaultTimeout(6_000)
             })
-
         }
     }
 

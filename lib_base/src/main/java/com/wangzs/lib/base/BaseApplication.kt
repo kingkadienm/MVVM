@@ -7,8 +7,9 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
+import com.tencent.bugly.crashreport.CrashReport
+import com.wangzs.lib.base.utils.CoroutineUtils
 import com.wangzs.lib.base.utils.ProcessUtils
-import com.wangzs.lib.base.utils.ThreadUtils
 
 /**
  * 初始化应用程序
@@ -36,12 +37,13 @@ open class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         if (ProcessUtils.isMainProcess == true) {
-            ThreadUtils.submit { initOnlyMainProcessInLowPriorityThread() }
+            CoroutineUtils.launchIO { initOnlyMainProcessInLowPriorityThread() }
             initOnlyMainProcess()
         }
-        ThreadUtils.submit {
+        CoroutineUtils.launchIO {
             initInLowPriorityThread()
         }
+
 
     }
 
@@ -77,6 +79,9 @@ open class BaseApplication : Application() {
      */
     protected open fun initInLowPriorityThread() {
         initSmartRefreshLayout()
+        // Bugly 异常捕捉
+        CrashReport.initCrashReport(this, AppConfig.getBuglyId(), AppConfig.isDebug())
+
     }
 
     open fun initSmartRefreshLayout() {

@@ -8,6 +8,7 @@ import android.os.storage.StorageManager
 import android.text.TextUtils
 import android.util.Base64
 import android.util.Log
+import com.wangzs.lib.base.AppConfig
 import com.wangzs.lib.base.BaseApplication
 import com.wangzs.lib.common.BuildConfig
 import com.wangzs.lib.common.utils.ext.canListFiles
@@ -39,7 +40,7 @@ object FileUtils {
         if (!TextUtils.isEmpty(storagePath)) {
             return storagePath
         }
-        if (!BuildConfig.DEBUG) {
+        if (!AppConfig.isLogEnable()) {
             val storagePath = getStoragePath(BaseApplication.getContext(), true)
             if (!TextUtils.isEmpty(storagePath)) {
                 return storagePath.also {

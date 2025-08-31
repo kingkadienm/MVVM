@@ -8,7 +8,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.wangzs.lib.base.module.constons.ARouteConstants
-import com.wangzs.lib.base.utils.ThreadUtils
+import com.wangzs.lib.base.utils.CoroutineUtils
 import com.wangzs.lib.base.utils.ext.view.showToast
 import com.wangzs.lib.base.view.BaseMvvmRefreshDataBindingActivity
 import com.wangzs.lib.domain.entity.Demo
@@ -93,7 +93,7 @@ class MoreRequestServerActivity :
         // 为了展示骨架屏
         if (firstLoad) {
             firstLoad = false
-            ThreadUtils.runOnUiThread({ mViewModel.refreshData() }, 1000)
+            CoroutineUtils.runOnUiThreadDelayed(1000,{mViewModel.refreshData() })
         } else {
             mViewModel.refreshData()
         }

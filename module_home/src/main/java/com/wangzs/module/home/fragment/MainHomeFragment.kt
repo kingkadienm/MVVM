@@ -2,12 +2,10 @@ package com.wangzs.module.home.fragment
 
 import android.view.View
 import android.view.animation.AnimationUtils
-import com.wangzs.lib.base.utils.ThreadUtils
+import com.wangzs.lib.base.utils.CoroutineUtils
 import com.wangzs.lib.base.utils.ext.view.showToast
 import com.wangzs.lib.base.view.BaseMvvmRefreshDataBindingFragment
-import com.wangzs.lib.common.utils.EnvironmentUtils
 import com.wangzs.lib.domain.entity.Demo
-import com.wangzs.lib.utils.LogUtils
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.lib.net.utils.ext.launch
 import com.wangzs.lib.net.utils.ext.observe
@@ -69,7 +67,7 @@ class MainHomeFragment :
         // 为了展示骨架屏
         if (firstLoad) {
             firstLoad = false
-            ThreadUtils.runOnUiThread({ mViewModel.refreshData() }, 1000)
+            CoroutineUtils.runOnUiThreadDelayed(1000,{ mViewModel.refreshData() })
         } else {
             mViewModel.refreshData()
         }

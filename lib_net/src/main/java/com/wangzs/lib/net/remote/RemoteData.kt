@@ -1,7 +1,7 @@
 package com.wangzs.lib.net.remote
 
+import com.wangzs.lib.base.AppConfig
 import com.wangzs.lib.domain.base.BaseResponse
-import com.wangzs.lib.net.config.URL_MAIN
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.lib.net.remote.network.AbsRemoteDataSource
 import com.wangzs.lib.net.remote.network.RetrofitManager
@@ -31,11 +31,11 @@ open class RemoteData : AbsRemoteDataSource() {
     }
 
     // 默认使用主URL
-    protected inline fun <reified T : BaseApiService> getService(baseUrl: String = URL_MAIN): T {
+    protected inline fun <reified T : BaseApiService> getService(baseUrl: String = AppConfig.getHostUrl()): T {
         return createService(baseUrl)
     }
     protected inline fun <reified T : BaseApiService> getMainService(): T {
-        return createService(URL_MAIN)
+        return createService(AppConfig.getHostUrl())
     }
     /**
      * 处理原始响应（非BaseResponse包装）

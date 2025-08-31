@@ -6,7 +6,9 @@ kapt {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
-def appVersion = rootProject.ext.versionName
+def appVersionName = rootProject.ext.versionName
+def appVersionCode = rootProject.ext.versionCode
+def applicationId = rootProject.ext.applicationId
 
 android {
     compileSdkVersion rootProject.ext.compileVersion
@@ -15,19 +17,45 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        versionCode appVersionCode
+        versionName appVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField("String", "APP_VERSION_NAME", "\"" + appVersionName + "\"")
+        buildConfigField("int ", "APP_VERSION_CODE",   ""+appVersionCode+""  )
+        buildConfigField("String", "APP_APPLICATION_ID", "\"" + applicationId + "\"")
+
+        // 日志打印开关
+        buildConfigField('boolean', 'LOG_ENABLE', '' + LOG_ENABLE + '')
+        // 测试包下的 BuglyId
+        buildConfigField('String', 'BUGLY_ID', '"' + BUGLY_ID + '"')
+        // 测试服务器的主机地址
+        buildConfigField('String', 'HOST_URL', '"' + HOST_URL + '"')
+
+        // 构建配置字段
+        buildConfigField('String', 'UM_KEY', '\"' + UMENG_APP_KEY + '\"')
+        buildConfigField('String', 'QQ_ID', '\"' + QQ_APP_ID + '\"')
+        buildConfigField('String', 'QQ_SECRET', '\"' + QQ_APP_SECRET + '\"')
+        buildConfigField('String', 'WX_ID', '\"' + WX_APP_ID + '\"')
+        buildConfigField('String', 'WX_SECRET', '\"' + WX_APP_SECRET + '\"')
+
+        // 清单占位符
+        addManifestPlaceholders([
+                'UM_KEY' : UMENG_APP_KEY,
+                'QQ_ID' : QQ_APP_ID,
+                'QQ_SECRET' : QQ_APP_SECRET,
+                'WX_ID' : WX_APP_ID,
+                'WX_SECRET' : WX_APP_SECRET
+        ])
     }
 
     buildTypes {
         debug {
-            buildConfigField("String", "APP_VERSION", "\"" + appVersion + "\"")
         }
         release {
-            buildConfigField("String", "APP_VERSION", "\"" + appVersion + "\"")
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -63,4 +91,7 @@ dependencies {
     Depends.kapt.each { kapt it }
     Depends.compileOnly.each { compileOnly it }
     Depends.testImplementations.each { testImplementation it }
+    // Bugly 异常捕捉：https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20190418140644
+    implementation 'com.tencent.bugly:crashreport:4.1.9.3'
+    implementation 'com.tencent.bugly:nativecrashreport:3.9.2'
 }

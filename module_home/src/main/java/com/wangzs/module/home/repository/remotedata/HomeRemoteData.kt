@@ -1,7 +1,6 @@
 package com.wangzs.module.home.repository.remotedata
 
 import com.wangzs.lib.domain.entity.Demo
-import com.wangzs.lib.net.config.URL_MAIN
 import com.wangzs.lib.net.dto.Resource
 import com.wangzs.lib.net.remote.RemoteData
 import com.wangzs.module.home.repository.service.HomeService
@@ -14,8 +13,8 @@ import com.wangzs.module.home.repository.service.RecipesService
  * @since 2022/7/10 11:40
  */
 class HomeRemoteData : RemoteData() {
-    private val recipesService = getService<RecipesService>(URL_MAIN)
-    private val homeService = getService<HomeService>(URL_MAIN)
+    private val recipesService = getService<RecipesService>()
+    private val homeService = getService<HomeService>()
 
 
     // 使用包装版本

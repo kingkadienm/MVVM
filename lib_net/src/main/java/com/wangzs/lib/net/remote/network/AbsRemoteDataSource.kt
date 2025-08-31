@@ -2,6 +2,7 @@ package com.wangzs.lib.net.remote.network
 
 import android.text.TextUtils
 import android.util.Log
+import com.wangzs.lib.base.AppConfig
 import com.wangzs.lib.base.utils.ext.view.showToast
 import com.wangzs.lib.domain.base.BaseResponse
 import com.wangzs.lib.utils.LogUtils
@@ -64,7 +65,7 @@ abstract class AbsRemoteDataSource {
                  * 因此需要在 [retrofit2.HttpServiceMethod.SuspendForResponse] 返回异常，通过拓展函数 在 [retrofit2.KotlinExtensions.awaitResponse] 中捕获异常，并返回包装类，
                  * 在[kotlinx.coroutines.CancellableContinuationImpl.resumeImpl]中返回 CancelledContinuation 包装类，最终抛出异常
                  */
-                if (BuildConfig.DEBUG) {
+                if (AppConfig.isLogEnable()) {
                     e.message?.showToast()
                     LogUtils.e(TAG, Log.getStackTraceString(e))
                 }
