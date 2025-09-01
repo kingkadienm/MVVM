@@ -21,8 +21,6 @@ import java.io.IOException
 class AiRemoteData : RemoteData() {
     private val ollamaApiService = getService<OllamaApiService>("http://192.168.1.12:11434")
 
-
-
     // Repository层
     suspend fun generateStream(request: GenerateRequest): Response<ResponseBody>{
         return ollamaApiService.generateStream(request)

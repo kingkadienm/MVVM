@@ -1,3 +1,17 @@
 <resources>
     <string name="module_main">module_main</string>
+    
+    <!-- Guide Page Strings -->
+    <string name="guide_page_1_title">Welcome to BaseDemo</string>
+    <string name="guide_page_1_desc">Discover amazing features and start your journey with us</string>
+    
+    <string name="guide_page_2_title">Powerful Features</string>
+    <string name="guide_page_2_desc">Experience seamless navigation and intuitive design</string>
+    
+    <string name="guide_page_3_title">Ready to Start</string>
+    <string name="guide_page_3_desc">Everything is set up and ready for you to explore</string>
+    
+    <string name="guide_start_experience">Start Experience</string>
+    <string name="guide_skip">Skip</string>
+    
 </resources>
