@@ -1,0 +1,13 @@
+apply from: rootProject.file("module.build.gradle")
+apply plugin: 'org.jetbrains.kotlin.android'
+android {
+    defaultConfig {
+        //如果是独立模块，则使用当前组件的包名
+        if (isModule.toBoolean()) {
+            applicationId "com.wangzs.module.login"
+        }
+    }
+}
+dependencies {
+
+}

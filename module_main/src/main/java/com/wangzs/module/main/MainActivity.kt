@@ -1,5 +1,6 @@
 package com.wangzs.module.main
 
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.wangzs.lib.base.module.constons.ARouteConstants
@@ -42,6 +43,14 @@ class MainActivity : BaseActivity() {
     override fun onBindLayout(): Int = R.layout.activity_main_index
 
     override fun initView() {
+        // 检查是否需要显示引导页
+        if (GuideActivity.shouldShowGuide()) {
+            val intent = Intent(this, GuideActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
+        
         mHomeFragment = mHomeProvider?.mainHomeFragment
         mMeFragment = mMeProvider?.mainMeFragment
         mAiFragment = mAiProvider?.aiFragment
