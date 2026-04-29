@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 评论相关颜色 -->
+    <color name="color_primary">#FF2196F3</color>
+    <color name="color_text_primary">#FF333333</color>
+    <color name="color_text_secondary">#FF666666</color>
+    <color name="color_divider">#FFE0E0E0</color>
+    <color name="color_like_active">#FFFF4444</color>
+    <color name="color_reply_background">#FFF8F8F8</color>
 </resources>

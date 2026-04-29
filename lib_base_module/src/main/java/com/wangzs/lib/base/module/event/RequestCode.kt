@@ -11,12 +11,20 @@ interface RequestCode {
 
     interface News//2000开始
 
-    interface Find//3000开始
+    interface Comment {//3000开始
+        companion object {
+            val COMMENT_ADD = 3000
+            val COMMENT_EDIT = 3001
+            val COMMENT_DELETE = 3002
+        }
+    }
+
+    interface Find//4000开始
 
     interface Me {
         companion object {
-            //4000开始
-            val NEWS_TYPE_ADD = 4000
+            //5000开始
+            val NEWS_TYPE_ADD = 5000
         }
     }
 }

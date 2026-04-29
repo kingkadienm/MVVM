@@ -10,7 +10,7 @@ sealed class Resource<out T>(
     class Success<out T>(data: T) : Resource<T>(data)
     class Loading<out T>(data: T? = null) : Resource<T>(data)
     class DataError<out T>(errorCode: Int) : Resource<T>(null, errorCode)
-
+    class Error<out T>(val exception: String) : Resource<T>()
     fun isSuccess(): Boolean {
         return errorCode == SUCCESS
     }
@@ -20,6 +20,7 @@ sealed class Resource<out T>(
             is Success<*> -> "Success[data=$data]"
             is DataError -> "Error[exception=$errorCode]"
             is Loading<T> -> "Loading"
+            is Error -> "Error[exception=$exception]"
         }
     }
 }

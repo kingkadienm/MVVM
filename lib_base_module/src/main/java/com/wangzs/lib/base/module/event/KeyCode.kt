@@ -16,6 +16,16 @@ interface KeyCode {
         }
     }
 
+    interface Comment {
+        companion object {
+            val COMMENT_ID = "commentid"
+            val PARENT_COMMENT_ID = "parentcommentid"
+            val TARGET_ID = "targetid"
+            val COMMENT_CONTENT = "commentcontent"
+            val REPLY_TO_USER_ID = "replytouserid"
+        }
+    }
+
     interface Find
 
     interface Me

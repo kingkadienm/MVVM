@@ -12,6 +12,7 @@ import com.wangzs.module.me.R
 import com.wangzs.module.me.activity.MoreRequestServerActivity
 import com.wangzs.module.me.activity.RoomTestActivity
 import com.wangzs.module.me.activity.SaveStateTestActivity
+import com.wangzs.module.me.activity.CommentTestActivity
 import com.wangzs.module.me.databinding.FragmentMeMainBinding
 import com.wangzs.module.me.viewmodel.MainMeViewModel
 
@@ -49,6 +50,7 @@ class MainMeFragment : BaseMvvmViewBindingFragment<FragmentMeMainBinding, MainMe
         requireBinding().button3.setOnClickListener(this::onClick)
         requireBinding().button4.setOnClickListener(this::onClick)
         requireBinding().button5.setOnClickListener(this::onClick)
+        requireBinding().button6.setOnClickListener(this::onClick)
     }
 
     override fun enableToolbar(): Boolean = true
@@ -97,6 +99,9 @@ class MainMeFragment : BaseMvvmViewBindingFragment<FragmentMeMainBinding, MainMe
             }
             R.id.button_5 -> {
                 MoreRequestServerActivity.start(mContext)
+            }
+            R.id.button_6 -> {
+                CommentTestActivity.start(mContext)
             }
         }
     }

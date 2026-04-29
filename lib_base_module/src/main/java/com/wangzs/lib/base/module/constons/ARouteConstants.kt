@@ -18,6 +18,8 @@ class ARouteConstants {
             const val ME_MAIN = "/me/main"
             const val ME_ROOT_TEST = "/me/room_test"
             const val ME_MORE_REQUEST_SERVER = "/me/more_request_server"
+            const val ME_COMMENT = "/me/comment"
+            const val ME_COMMENT_TEST = "/me/comment_test"
         }
     }
 

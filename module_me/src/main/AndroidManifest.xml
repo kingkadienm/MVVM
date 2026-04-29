@@ -12,6 +12,12 @@
         <activity
             android:name="com.wangzs.module.me.activity.MoreRequestServerActivity"
             android:exported="false" />
+
+        <activity android:name=".activity.CommentActivity"
+            android:exported="false" />
+        <activity android:name=".activity.CommentTestActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
